@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ language: 'en', darkMode: false }" :class="{ 'dark': darkMode, 'rtl': language === 'ar' }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title x-text="language === 'en' ? 'Contact Us - Premium Millwork Services' : 'اتصل بنا - خدمات النجارة المتميزة'"></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'var(--background)',
+                        foreground: 'var(--foreground)',
+                        card: 'var(--card)',
+                        'card-foreground': 'var(--card-foreground)',
+                        popover: 'var(--popover)',
+                        'popover-foreground': 'var(--popover-foreground)',
+                        primary: 'var(--primary)',
+                        'primary-foreground': 'var(--primary-foreground)',
+                        secondary: 'var(--secondary)',
+                        'secondary-foreground': 'var(--secondary-foreground)',
+                        muted: 'var(--muted)',
+                        'muted-foreground': 'var(--muted-foreground)',
+                        accent: 'var(--accent)',
+                        'accent-foreground': 'var(--accent-foreground)',
+                        destructive: 'var(--destructive)',
+                        'destructive-foreground': 'var(--destructive-foreground)',
+                        border: 'var(--border)',
+                        input: 'var(--input)',
+                        ring: 'var(--ring)',
+                        sidebar: 'var(--sidebar)',
+                        'sidebar-foreground': 'var(--sidebar-foreground)',
+                        'sidebar-primary': 'var(--sidebar-primary)',
+                        'sidebar-primary-foreground': 'var(--sidebar-primary-foreground)',
+                        'sidebar-accent': 'var(--sidebar-accent)',
+                        'sidebar-accent-foreground': 'var(--sidebar-accent-foreground)',
+                        'sidebar-border': 'var(--sidebar-border)',
+                        'sidebar-ring': 'var(--sidebar-ring)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="globals.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        .font-body { font-family: 'DM Sans', sans-serif; }
+    </style>
+</head>
+<body class="font-body">
+    <!-- Navigation (same as other pages) -->
+    <nav class="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-heading font-bold text-primary">
+                        <span x-show="language === 'en'">CraftWood</span>
+                        <span x-show="language === 'ar'">كرافت وود</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4" :class="{ 'space-x-reverse': language === 'ar' }">
+                        <a href="index.html" class="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">Home</span>
+                            <span x-show="language === 'ar'">الرئيسية</span>
+                        </a>
+                        <a href="portfolio.html" class="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">Portfolio</span>
+                            <span x-show="language === 'ar'">المعرض</span>
+                        </a>
+                        <a href="services.html" class="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">Services</span>
+                            <span x-show="language === 'ar'">الخدمات</span>
+                        </a>
+                        <a href="about.html" class="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">About</span>
+                            <span x-show="language === 'ar'">من نحن</span>
+                        </a>
+                        <a href="contact.html" class="bg-accent text-accent-foreground hover:bg-accent/90 px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">Contact</span>
+                            <span x-show="language === 'ar'">اتصل بنا</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language Toggle & Dark Mode -->
+                <div class="hidden md:flex items-center space-x-4" :class="{ 'space-x-reverse': language === 'ar' }">
+                    <button @click="language = language === 'en' ? 'ar' : 'en'" class="text-foreground hover:text-primary transition-colors">
+                        <span x-show="language === 'en'">العربية</span>
+                        <span x-show="language === 'ar'">English</span>
+                    </button>
+                    <button @click="darkMode = !darkMode" class="text-foreground hover:text-primary transition-colors">
+                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-foreground hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card">
+                <a href="index.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">Home</span>
+                    <span x-show="language === 'ar'">الرئيسية</span>
+                </a>
+                <a href="portfolio.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">Portfolio</span>
+                    <span x-show="language === 'ar'">المعرض</span>
+                </a>
+                <a href="services.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">Services</span>
+                    <span x-show="language === 'ar'">الخدمات</span>
+                </a>
+                <a href="about.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">About</span>
+                    <span x-show="language === 'ar'">من نحن</span>
+                </a>
+                <a href="contact.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">Contact</span>
+                    <span x-show="language === 'ar'">اتصل بنا</span>
+                </a>
+                <div class="flex items-center space-x-4 px-3 py-2" :class="{ 'space-x-reverse': language === 'ar' }">
+                    <button @click="language = language === 'en' ? 'ar' : 'en'" class="text-card-foreground hover:text-primary">
+                        <span x-show="language === 'en'">العربية</span>
+                        <span x-show="language === 'ar'">English</span>
+                    </button>
+                    <button @click="darkMode = !darkMode" class="text-card-foreground hover:text-primary">
+                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-br from-card to-background py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-heading font-bold text-card-foreground mb-4">
+                <span x-show="language === 'en'">Contact Us</span>
+                <span x-show="language === 'ar'">اتصل بنا</span>
+            </h1>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">Ready to bring your millwork vision to life? Get in touch with our expert team for a free consultation and quote.</span>
+                <span x-show="language === 'ar'">مستعد لتحقيق رؤيتك في الأعمال الخشبية؟ تواصل مع فريق الخبراء لدينا للحصول على استشارة وعرض سعر مجاني.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div class="bg-card rounded-lg p-8 shadow-lg">
+                    <h2 class="text-2xl font-heading font-bold text-card-foreground mb-6">
+                        <span x-show="language === 'en'">Get Free Consultation</span>
+                        <span x-show="language === 'ar'">احصل على استشارة مجانية</span>
+                    </h2>
+                    
+                    <form x-data="{ formSubmitted: false }" @submit.prevent="formSubmitted = true" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-card-foreground mb-2">
+                                    <span x-show="language === 'en'">First Name</span>
+                                    <span x-show="language === 'ar'">الاسم الأول</span>
+                                </label>
+                                <input type="text" required class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-card-foreground mb-2">
+                                    <span x-show="language === 'en'">Last Name</span>
+                                    <span x-show="language === 'ar'">اسم العائلة</span>
+                                </label>
+                                <input type="text" required class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-card-foreground mb-2">
+                                <span x-show="language === 'en'">Email Address</span>
+                                <span x-show="language === 'ar'">عنوان البريد الإلكتروني</span>
+                            </label>
+                            <input type="email" required class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-card-foreground mb-2">
+                                <span x-show="language === 'en'">Phone Number</span>
+                                <span x-show="language === 'ar'">رقم الهاتف</span>
+                            </label>
+                            <input type="tel" class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-card-foreground mb-2">
+                                <span x-show="language === 'en'">Project Type</span>
+                                <span x-show="language === 'ar'">نوع المشروع</span>
+                            </label>
+                            <select class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                                <option x-show="language === 'en'" value="">Select a service</option>
+                                <option x-show="language === 'ar'" value="">اختر خدمة</option>
+                                <option x-show="language === 'en'" value="kitchen">Kitchen Cabinets</option>
+                                <option x-show="language === 'ar'" value="kitchen">خزائن المطبخ</option>
+                                <option x-show="language === 'en'" value="furniture">Custom Furniture</option>
+                                <option x-show="language === 'ar'" value="furniture">الأثاث المخصص</option>
+                                <option x-show="language === 'en'" value="architectural">Architectural Millwork</option>
+                                <option x-show="language === 'ar'" value="architectural">الأعمال الخشبية المعمارية</option>
+                                <option x-show="language === 'en'" value="other">Other</option>
+                                <option x-show="language === 'ar'" value="other">أخرى</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-card-foreground mb-2">
+                                <span x-show="language === 'en'">Project Details</span>
+                                <span x-show="language === 'ar'">تفاصيل المشروع</span>
+                            </label>
+                            <textarea rows="4" required class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" :placeholder="language === 'en' ? 'Tell us about your project, timeline, and any specific requirements...' : 'أخبرنا عن مشروعك والجدول الزمني وأي متطلبات محددة...'"></textarea>
+                        </div>
+
+                        <div x-show="!formSubmitted">
+                            <button type="submit" class="w-full bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium transition-colors">
+                                <span x-show="language === 'en'">Send Message</span>
+                                <span x-show="language === 'ar'">إرسال الرسالة</span>
+                            </button>
+                        </div>
+
+                        <div x-show="formSubmitted" x-transition class="text-center p-6 bg-accent/10 rounded-lg">
+                            <div class="text-accent mb-2">
+                                <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-card-foreground mb-2">
+                                <span x-show="language === 'en'">Message Sent!</span>
+                                <span x-show="language === 'ar'">تم إرسال الرسالة!</span>
+                            </h3>
+                            <p class="text-muted-foreground">
+                                <span x-show="language === 'en'">Thank you for your inquiry. We'll get back to you within 24 hours.</span>
+                                <span x-show="language === 'ar'">شكراً لاستفسارك. سنعاود الاتصال بك خلال 24 ساعة.</span>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-card rounded-lg p-8 shadow-lg">
+                        <h3 class="text-xl font-heading font-semibold text-card-foreground mb-6">
+                            <span x-show="language === 'en'">Contact Information</span>
+                            <span x-show="language === 'ar'">معلومات الاتصال</span>
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4" :class="{ 'space-x-reverse': language === 'ar' }">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-card-foreground mb-1">
+                                        <span x-show="language === 'en'">Address</span>
+                                        <span x-show="language === 'ar'">العنوان</span>
+                                    </h4>
+                                    <p class="text-muted-foreground">
+                                        <span x-show="language === 'en'">123 Craft Street<br>Woodwork City, State 12345</span>
+                                        <span x-show="language === 'ar'">123 شارع الحرف<br>مدينة الأعمال الخشبية، الولاية 12345</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4" :class="{ 'space-x-reverse': language === 'ar' }">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-card-foreground mb-1">
+                                        <span x-show="language === 'en'">Phone</span>
+                                        <span x-show="language === 'ar'">الهاتف</span>
+                                    </h4>
+                                    <p class="text-muted-foreground">
+                                        <a href="tel:+1234567890" class="hover:text-primary transition-colors">+1 (234) 567-8900</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4" :class="{ 'space-x-reverse': language === 'ar' }">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-card-foreground mb-1">
+                                        <span x-show="language === 'en'">Email</span>
+                                        <span x-show="language === 'ar'">البريد الإلكتروني</span>
+                                    </h4>
+                                    <p class="text-muted-foreground">
+                                        <a href="mailto:info@craftwood.com" class="hover:text-primary transition-colors">info@craftwood.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4" :class="{ 'space-x-reverse': language === 'ar' }">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-card-foreground mb-1">
+                                        <span x-show="language === 'en'">Business Hours</span>
+                                        <span x-show="language === 'ar'">ساعات العمل</span>
+                                    </h4>
+                                    <p class="text-muted-foreground">
+                                        <span x-show="language === 'en'">Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</span>
+                                        <span x-show="language === 'ar'">الاثنين - الجمعة: 8:00 ص - 6:00 م<br>السبت: 9:00 ص - 4:00 م<br>الأحد: مغلق</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Contact Options -->
+                    <div class="bg-card rounded-lg p-8 shadow-lg">
+                        <h3 class="text-xl font-heading font-semibold text-card-foreground mb-6">
+                            <span x-show="language === 'en'">Quick Contact</span>
+                            <span x-show="language === 'ar'">اتصال سريع</span>
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <a href="tel:+1234567890" class="flex items-center justify-center bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg font-medium transition-colors">
+                                <svg class="w-5 h-5 mr-2" :class="{ 'ml-2 mr-0': language === 'ar' }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <span x-show="language === 'en'">Call Now</span>
+                                <span x-show="language === 'ar'">اتصل الآن</span>
+                            </a>
+                            
+                            <a href="https://wa.me/1234567890" target="_blank" class="flex items-center justify-center bg-green-500 text-white hover:bg-green-600 px-6 py-3 rounded-lg font-medium transition-colors">
+                                <svg class="w-5 h-5 mr-2" :class="{ 'ml-2 mr-0': language === 'ar' }" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                                </svg>
+                                <span x-show="language === 'en'">WhatsApp</span>
+                                <span x-show="language === 'ar'">واتساب</span>
+                            </a>
+                            
+                            <a href="mailto:info@craftwood.com" class="flex items-center justify-center bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 rounded-lg font-medium transition-colors">
+                                <svg class="w-5 h-5 mr-2" :class="{ 'ml-2 mr-0': language === 'ar' }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                <span x-show="language === 'en'">Send Email</span>
+                                <span x-show="language === 'ar'">إرسال بريد إلكتروني</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as other pages) -->
+    <footer class="bg-card border-t border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-heading font-bold text-card-foreground mb-4">
+                        <span x-show="language === 'en'">CraftWood</span>
+                        <span x-show="language === 'ar'">كرافت وود</span>
+                    </h3>
+                    <p class="text-muted-foreground mb-6 max-w-md">
+                        <span x-show="language === 'en'">Creating exceptional millwork solutions with precision, passion, and unmatched craftsmanship for over 20 years.</span>
+                        <span x-show="language === 'ar'">إنشاء حلول أعمال خشبية استثنائية بدقة وشغف وحرفية لا مثيل لها لأكثر من 20 عامًا.</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-heading font-semibold text-card-foreground mb-4">
+                        <span x-show="language === 'en'">Services</span>
+                        <span x-show="language === 'ar'">الخدمات</span>
+                    </h4>
+                    <ul class="space-y-2">
+                        <li><a href="portfolio.html?category=kitchen" class="text-muted-foreground hover:text-primary transition-colors">
+                            <span x-show="language === 'en'">Kitchen Cabinets</span>
+                            <span x-show="language === 'ar'">خزائن المطبخ</span>
+                        </a></li>
+                        <li><a href="portfolio.html?category=furniture" class="text-muted-foreground hover:text-primary transition-colors">
+                            <span x-show="language === 'en'">Custom Furniture</span>
+                            <span x-show="language === 'ar'">الأثاث المخصص</span>
+                        </a></li>
+                        <li><a href="portfolio.html?category=architectural" class="text-muted-foreground hover:text-primary transition-colors">
+                            <span x-show="language === 'en'">Architectural Millwork</span>
+                            <span x-show="language === 'ar'">الأعمال الخشبية المعمارية</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-heading font-semibold text-card-foreground mb-4">
+                        <span x-show="language === 'en'">Contact Info</span>
+                        <span x-show="language === 'ar'">معلومات الاتصال</span>
+                    </h4>
+                    <ul class="space-y-2">
+                        <li class="text-muted-foreground">
+                            <span x-show="language === 'en'">123 Craft Street, City, State 12345</span>
+                            <span x-show="language === 'ar'">123 شارع الحرف، المدينة، الولاية 12345</span>
+                        </li>
+                        <li><a href="tel:+1234567890" class="text-muted-foreground hover:text-primary transition-colors">+1 (234) 567-8900</a></li>
+                        <li><a href="mailto:info@craftwood.com" class="text-muted-foreground hover:text-primary transition-colors">info@craftwood.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-border mt-8 pt-8 text-center">
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">&copy; 2024 CraftWood. All rights reserved.</span>
+                    <span x-show="language === 'ar'">&copy; 2024 كرافت وود. جميع الحقوق محفوظة.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

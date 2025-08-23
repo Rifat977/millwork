@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ language: 'en', darkMode: false }" :class="{ 'dark': darkMode, 'rtl': language === 'ar' }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title x-text="language === 'en' ? 'About Us - Premium Millwork Services' : 'من نحن - خدمات النجارة المتميزة'"></title>
+    <meta name="description" x-bind:content="language === 'en' ? 'Learn about our millwork company, our story, values, and commitment to quality craftsmanship in custom woodwork.' : 'تعرف على شركة الأعمال الخشبية، قصتنا، قيمنا، والتزامنا بالحرفية عالية الجودة في الأعمال الخشبية المخصصة.'">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'var(--background, #ffffff)',
+                        foreground: 'var(--foreground, #475569)',
+                        card: 'var(--card, #ecfeff)',
+                        'card-foreground': 'var(--card-foreground, #164e63)',
+                        popover: 'var(--popover, #ffffff)',
+                        'popover-foreground': 'var(--popover-foreground, #475569)',
+                        primary: 'var(--primary, #164e63)',
+                        'primary-foreground': 'var(--primary-foreground, #ffffff)',
+                        secondary: 'var(--secondary, #f97316)',
+                        'secondary-foreground': 'var(--secondary-foreground, #ffffff)',
+                        muted: 'var(--muted, #fef2f2)',
+                        'muted-foreground': 'var(--muted-foreground, #374151)',
+                        accent: 'var(--accent, #f97316)',
+                        'accent-foreground': 'var(--accent-foreground, #ffffff)',
+                        destructive: 'var(--destructive, #dc2626)',
+                        'destructive-foreground': 'var(--destructive-foreground, #ffffff)',
+                        border: 'var(--border, #475569)',
+                        input: 'var(--input, #ecfeff)',
+                        ring: 'var(--ring, rgba(25, 118, 210, 0.5))',
+                        sidebar: 'var(--sidebar, #ffffff)',
+                        'sidebar-foreground': 'var(--sidebar-foreground, #475569)',
+                        'sidebar-primary': 'var(--sidebar-primary, #164e63)',
+                        'sidebar-primary-foreground': 'var(--sidebar-primary-foreground, #ffffff)',
+                        'sidebar-accent': 'var(--sidebar-accent, #f97316)',
+                        'sidebar-accent-foreground': 'var(--sidebar-accent-foreground, #ffffff)',
+                        'sidebar-border': 'var(--sidebar-border, #475569)',
+                        'sidebar-ring': 'var(--sidebar-ring, rgba(25, 118, 210, 0.5))',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="globals.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        .font-body { font-family: 'DM Sans', sans-serif; }
+    </style>
+</head>
+<body class="font-body">
+    <!-- Navigation -->
+    <nav class="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-heading font-bold text-primary">
+                        <span x-show="language === 'en'">CraftWood</span>
+                        <span x-show="language === 'ar'">كرافت وود</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4" :class="{ 'space-x-reverse': language === 'ar' }">
+                        <a href="index.html" class="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">Home</span>
+                            <span x-show="language === 'ar'">الرئيسية</span>
+                        </a>
+                        <a href="portfolio.html" class="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">Portfolio</span>
+                            <span x-show="language === 'ar'">المعرض</span>
+                        </a>
+                        <a href="services.html" class="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">Services</span>
+                            <span x-show="language === 'ar'">الخدمات</span>
+                        </a>
+                        <a href="about.html" class="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">About</span>
+                            <span x-show="language === 'ar'">من نحن</span>
+                        </a>
+                        <a href="contact.html" class="bg-accent text-accent-foreground hover:bg-accent/90 px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span x-show="language === 'en'">Contact</span>
+                            <span x-show="language === 'ar'">اتصل بنا</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language Toggle & Dark Mode -->
+                <div class="hidden md:flex items-center space-x-4" :class="{ 'space-x-reverse': language === 'ar' }">
+                    <button @click="language = language === 'en' ? 'ar' : 'en'" class="text-foreground hover:text-primary transition-colors">
+                        <span x-show="language === 'en'">العربية</span>
+                        <span x-show="language === 'ar'">English</span>
+                    </button>
+                    <button @click="darkMode = !darkMode" class="text-foreground hover:text-primary transition-colors">
+                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-foreground hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card">
+                <a href="index.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">Home</span>
+                    <span x-show="language === 'ar'">الرئيسية</span>
+                </a>
+                <a href="portfolio.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">Portfolio</span>
+                    <span x-show="language === 'ar'">المعرض</span>
+                </a>
+                <a href="services.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">Services</span>
+                    <span x-show="language === 'ar'">الخدمات</span>
+                </a>
+                <a href="about.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">About</span>
+                    <span x-show="language === 'ar'">من نحن</span>
+                </a>
+                <a href="contact.html" class="text-card-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium">
+                    <span x-show="language === 'en'">Contact</span>
+                    <span x-show="language === 'ar'">اتصل بنا</span>
+                </a>
+                <div class="flex items-center space-x-4 px-3 py-2" :class="{ 'space-x-reverse': language === 'ar' }">
+                    <button @click="language = language === 'en' ? 'ar' : 'en'" class="text-card-foreground hover:text-primary">
+                        <span x-show="language === 'en'">العربية</span>
+                        <span x-show="language === 'ar'">English</span>
+                    </button>
+                    <button @click="darkMode = !darkMode" class="text-card-foreground hover:text-primary">
+                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Header -->
+    <section class="pt-20 pb-16 bg-gradient-to-br from-card to-background">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl font-bold mb-6 text-card-foreground" x-text="language === 'en' ? 'About CraftWood' : 'حول كرافت وود'"></h1>
+                    <p class="text-xl text-muted-foreground leading-relaxed mb-8" x-text="language === 'en' ? 'For over 15 years, we have been crafting exceptional custom millwork that transforms spaces and exceeds expectations. Our commitment to quality, precision, and customer satisfaction has made us a trusted name in the industry.' : 'لأكثر من 15 عامًا، نقوم بصناعة أعمال خشبية مخصصة استثنائية تحول المساحات وتتجاوز التوقعات. التزامنا بالجودة والدقة ورضا العملاء جعلنا اسمًا موثوقًا في الصناعة.'"></p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2">500+</div>
+                            <div class="text-muted-foreground" x-text="language === 'en' ? 'Projects Completed' : 'مشروع مكتمل'"></div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2">15+</div>
+                            <div class="text-muted-foreground" x-text="language === 'en' ? 'Years Experience' : 'سنة خبرة'"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="images/craftsman-working.jpg" 
+                         alt="Craftsman at work" 
+                         class="rounded-2xl shadow-2xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-20 bg-background">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-foreground" x-text="language === 'en' ? 'Our Story' : 'قصتنا'"></h2>
+                <div class="prose prose-lg max-w-none text-muted-foreground">
+                    <p x-text="language === 'en' ? 'Founded in 2008 by master craftsman Ahmed Al-Rashid, CraftWood began as a small workshop with a big vision: to create custom millwork that combines traditional craftsmanship with modern design sensibilities.' : 'تأسست كرافت وود في عام 2008 على يد الحرفي الماهر أحمد الراشد، بدأت كورشة صغيرة برؤية كبيرة: إنشاء أعمال خشبية مخصصة تجمع بين الحرفية التقليدية والحساسية التصميمية الحديثة.'"></p>
+                    <p x-text="language === 'en' ? 'Over the years, we have grown from a one-man operation to a team of skilled artisans, each bringing their unique expertise to every project. Our workshop is equipped with state-of-the-art machinery alongside traditional hand tools, allowing us to achieve the perfect balance of precision and artistry.' : 'على مر السنين، نمونا من عملية رجل واحد إلى فريق من الحرفيين المهرة، كل منهم يجلب خبرته الفريدة لكل مشروع. ورشتنا مجهزة بآلات حديثة إلى جانب الأدوات اليدوية التقليدية، مما يسمح لنا بتحقيق التوازن المثالي بين الدقة والفنية.'"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-20 bg-card">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 text-card-foreground" x-text="language === 'en' ? 'Our Values' : 'قيمنا'"></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">🎯</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-card-foreground" x-text="language === 'en' ? 'Precision' : 'الدقة'"></h3>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'Every measurement, every cut, every joint is executed with meticulous attention to detail' : 'كل قياس، كل قطع، كل وصلة يتم تنفيذها بعناية دقيقة بالتفاصيل'"></p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">💎</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-card-foreground" x-text="language === 'en' ? 'Quality' : 'الجودة'"></h3>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'We use only the finest materials and time-tested techniques to ensure lasting beauty' : 'نستخدم فقط أفضل المواد والتقنيات المجربة لضمان الجمال الدائم'"></p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">🤝</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-card-foreground" x-text="language === 'en' ? 'Partnership' : 'الشراكة'"></h3>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'We work closely with our clients to bring their vision to life, every step of the way' : 'نعمل بشكل وثيق مع عملائنا لتحقيق رؤيتهم، في كل خطوة من الطريق'"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-background">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 text-foreground" x-text="language === 'en' ? 'Meet Our Team' : 'تعرف على فريقنا'"></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <img src="images/craftsman-working.jpg" 
+                         alt="Ahmed Al-Rashid" 
+                         class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold mb-2 text-foreground" x-text="language === 'en' ? 'Ahmed Al-Rashid' : 'أحمد الراشد'"></h3>
+                    <p class="text-primary font-semibold mb-4" x-text="language === 'en' ? 'Founder & Master Craftsman' : 'المؤسس والحرفي الماهر'"></p>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? '25+ years of experience in fine woodworking and custom millwork design' : '25+ سنة من الخبرة في النجارة الفاخرة وتصميم الأعمال الخشبية المخصصة'"></p>
+                </div>
+                <div class="text-center">
+                    <img src="images/kitchen-cabinets.jpg" 
+                         alt="Sarah Mitchell" 
+                         class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold mb-2 text-foreground" x-text="language === 'en' ? 'Sarah Mitchell' : 'سارة ميتشل'"></h3>
+                    <p class="text-primary font-semibold mb-4" x-text="language === 'en' ? 'Design Director' : 'مديرة التصميم'"></p>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'Award-winning designer specializing in contemporary millwork solutions' : 'مصممة حائزة على جوائز متخصصة في حلول الأعمال الخشبية المعاصرة'"></p>
+                </div>
+                <div class="text-center">
+                    <img src="images/architectural-millwork.jpg" 
+                         alt="Omar Hassan" 
+                         class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold mb-2 text-foreground" x-text="language === 'en' ? 'Omar Hassan' : 'عمر حسان'"></h3>
+                    <p class="text-primary font-semibold mb-4" x-text="language === 'en' ? 'Project Manager' : 'مدير المشاريع'"></p>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'Ensures every project is delivered on time and exceeds client expectations' : 'يضمن تسليم كل مشروع في الوقت المحدد ويتجاوز توقعات العملاء'"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 bg-card">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 text-card-foreground" x-text="language === 'en' ? 'Our Process' : 'عمليتنا'"></h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">1</div>
+                    <h3 class="text-lg font-bold mb-4 text-card-foreground" x-text="language === 'en' ? 'Consultation' : 'الاستشارة'"></h3>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'We meet to understand your vision and requirements' : 'نلتقي لفهم رؤيتك ومتطلباتك'"></p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">2</div>
+                    <h3 class="text-lg font-bold mb-4 text-card-foreground" x-text="language === 'en' ? 'Design' : 'التصميم'"></h3>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'Our team creates detailed designs and 3D renderings' : 'فريقنا ينشئ تصاميم مفصلة وعروض ثلاثية الأبعاد'"></p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">3</div>
+                    <h3 class="text-lg font-bold mb-4 text-card-foreground" x-text="language === 'en' ? 'Crafting' : 'الصناعة'"></h3>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'Skilled artisans bring the design to life in our workshop' : 'الحرفيون المهرة يحققون التصميم في ورشتنا'"></p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">4</div>
+                    <h3 class="text-lg font-bold mb-4 text-card-foreground" x-text="language === 'en' ? 'Installation' : 'التركيب'"></h3>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'Professional installation ensures perfect fit and finish' : 'التركيب الاحترافي يضمن الملاءمة والتشطيب المثالي'"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-primary-foreground mb-6" x-text="language === 'en' ? 'Ready to Work Together?' : 'مستعد للعمل معًا؟'"></h2>
+            <p class="text-xl text-primary-foreground/80 mb-8" x-text="language === 'en' ? 'Let us help you create something extraordinary for your space' : 'دعنا نساعدك في إنشاء شيء استثنائي لمساحتك'"></p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-primary-foreground text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/90 transition-colors" x-text="language === 'en' ? 'Get Started' : 'ابدأ الآن'"></a>
+                <a href="portfolio.html" class="bg-transparent border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground hover:text-primary transition-colors" x-text="language === 'en' ? 'View Our Work' : 'اعرض أعمالنا'"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-foreground text-foreground-foreground py-12">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <span class="text-primary-foreground font-bold">CW</span>
+                        </div>
+                        <span class="text-lg font-bold" x-text="language === 'en' ? 'CraftWood' : 'كرافت وود'"></span>
+                    </div>
+                    <p class="text-muted-foreground" x-text="language === 'en' ? 'Crafting excellence in custom millwork since 2008' : 'صناعة التميز في الأعمال الخشبية المخصصة منذ 2008'"></p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4" x-text="language === 'en' ? 'Services' : 'الخدمات'"></h4>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li x-text="language === 'en' ? 'Kitchen Cabinets' : 'خزائن المطبخ'"></li>
+                        <li x-text="language === 'en' ? 'Office Furniture' : 'أثاث المكاتب'"></li>
+                        <li x-text="language === 'en' ? 'Custom Millwork' : 'أعمال خشبية مخصصة'"></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4" x-text="language === 'en' ? 'Quick Links' : 'روابط سريعة'"></h4>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li><a href="portfolio.html" class="hover:text-foreground transition-colors" x-text="language === 'en' ? 'Portfolio' : 'المعرض'"></a></li>
+                        <li><a href="about.html" class="hover:text-foreground transition-colors" x-text="language === 'en' ? 'About Us' : 'من نحن'"></a></li>
+                        <li><a href="contact.html" class="hover:text-foreground transition-colors" x-text="language === 'en' ? 'Contact' : 'اتصل بنا'"></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4" x-text="language === 'en' ? 'Contact Info' : 'معلومات الاتصال'"></h4>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li>+1 (555) 123-4567</li>
+                        <li>info@craftwood.com</li>
+                        <li x-text="language === 'en' ? '123 Craft Street, City' : '123 شارع الحرف، المدينة'"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
+                <p x-text="language === 'en' ? '© 2024 CraftWood. All rights reserved.' : '© 2024 كرافت وود. جميع الحقوق محفوظة.'"></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
