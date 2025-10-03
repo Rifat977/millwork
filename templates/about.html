@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Royal Aluminium and UPVC Qatar{% endblock %}
+{% block description %}Learn about Royal Aluminium and UPVC Qatar's commitment to excellence in aluminium and UPVC solutions. Our story, values, and quality craftsmanship.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-card to-background py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-card-foreground leading-tight mb-6">
+                <span x-show="language === 'en'">About CraftWood</span>
+                <span x-show="language === 'ar'">عن كرافت وود</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                <span x-show="language === 'en'">For over two decades, we've been crafting exceptional custom millwork that transforms spaces and exceeds expectations.</span>
+                <span x-show="language === 'ar'">لأكثر من عقدين من الزمان، كنا نصنع أعمال خشبية مخصصة استثنائية تحول المساحات وتتجاوز التوقعات.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Our Story -->
+<section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground">
+                    <span x-show="language === 'en'">Our Story</span>
+                    <span x-show="language === 'ar'">قصتنا</span>
+                </h2>
+                <p class="text-lg text-muted-foreground">
+                    <span x-show="language === 'en'">Founded in 2001, CraftWood began as a small family business with a passion for woodworking and a commitment to quality. What started as custom furniture for friends and neighbors has grown into a premier millwork company serving clients across the region.</span>
+                    <span x-show="language === 'ar'">تأسست كرافت وود في عام 2001 كشركة عائلية صغيرة بشغف للأعمال الخشبية والتزام بالجودة. ما بدأ كأثاث مخصص للأصدقاء والجيران تطور إلى شركة أعمال خشبية رائدة تخدم العملاء في جميع أنحاء المنطقة.</span>
+                </p>
+                <p class="text-lg text-muted-foreground">
+                    <span x-show="language === 'en'">Today, we combine traditional craftsmanship with modern techniques to create stunning custom millwork that stands the test of time.</span>
+                    <span x-show="language === 'ar'">اليوم، نجمع بين الحرفية التقليدية والتقنيات الحديثة لإنشاء أعمال خشبية مخصصة مذهلة تتحمل اختبار الزمن.</span>
+                </p>
+            </div>
+            <div>
+                <img src="{% static 'images/craftsman-working.jpg' %}" alt="CraftWood Craftsman" class="w-full h-96 object-cover rounded-lg shadow-lg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values -->
+<section class="py-20 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-4">
+                <span x-show="language === 'en'">Our Values</span>
+                <span x-show="language === 'ar'">قيمنا</span>
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">The principles that guide everything we do</span>
+                <span x-show="language === 'ar'">المبادئ التي توجه كل ما نقوم به</span>
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Quality First</span>
+                    <span x-show="language === 'ar'">الجودة أولاً</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">We never compromise on quality, using only the finest materials and proven techniques</span>
+                    <span x-show="language === 'ar'">لا نتنازل أبداً عن الجودة، باستخدام أفضل المواد والتقنيات المجربة</span>
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Customer Focus</span>
+                    <span x-show="language === 'ar'">التركيز على العملاء</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Your vision is our priority. We listen, collaborate, and deliver exactly what you envision</span>
+                    <span x-show="language === 'ar'">رؤيتك هي أولويتنا. نستمع، نتعاون، ونقدم بالضبط ما تتخيله</span>
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Innovation</span>
+                    <span x-show="language === 'ar'">الابتكار</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">We embrace new technologies and techniques while honoring traditional craftsmanship</span>
+                    <span x-show="language === 'ar'">نعتنق التقنيات والطرق الجديدة مع احترام الحرفية التقليدية</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                <span x-show="language === 'en'">Meet Our Team</span>
+                <span x-show="language === 'ar'">تعرف على فريقنا</span>
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">Skilled craftspeople dedicated to bringing your vision to life</span>
+                <span x-show="language === 'ar'">حرفيون مهرة ملتزمون بتحقيق رؤيتك</span>
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-card rounded-lg p-8">
+                <img src="{% static 'images/craftsman-working.jpg' %}" alt="Master Craftsman" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Master Craftspeople</span>
+                    <span x-show="language === 'ar'">الحرفيون الماهرون</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Our team combines decades of experience with a passion for perfection</span>
+                    <span x-show="language === 'ar'">فريقنا يجمع عقود من الخبرة مع شغف الكمال</span>
+                </p>
+            </div>
+            
+            <div class="bg-card rounded-lg p-8">
+                <img src="{% static 'images/kitchen-cabinets.jpg' %}" alt="Design Team" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Design Specialists</span>
+                    <span x-show="language === 'ar'">متخصصو التصميم</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Creative designers who understand both aesthetics and functionality</span>
+                    <span x-show="language === 'ar'">مصممون مبدعون يفهمون كل من الجماليات والوظائف</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

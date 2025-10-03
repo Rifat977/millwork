@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Portfolio - Custom Millwork Gallery{% endblock %}
+{% block description %}Explore our portfolio of custom millwork projects including kitchen cabinets, furniture, and architectural woodwork.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-card to-background py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-card-foreground leading-tight mb-6">
+                <span x-show="language === 'en'">Our Portfolio</span>
+                <span x-show="language === 'ar'">معرض أعمالنا</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                <span x-show="language === 'en'">Discover our collection of custom millwork projects that showcase the perfect blend of craftsmanship, functionality, and design excellence.</span>
+                <span x-show="language === 'ar'">اكتشف مجموعتنا من مشاريع الأعمال الخشبية المخصصة التي تعرض المزج المثالي بين الحرفية والوظائف والتميز في التصميم.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Kitchen Projects -->
+<section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                <span x-show="language === 'en'">Kitchen Projects</span>
+                <span x-show="language === 'ar'">مشاريع المطابخ</span>
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">Custom kitchen cabinets and millwork that transform cooking spaces into culinary masterpieces</span>
+                <span x-show="language === 'ar'">خزائن مطابخ وأعمال خشبية مخصصة تحول مساحات الطهي إلى تحف طهوية</span>
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo1.jpeg' %}" alt="Modern Kitchen" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
+                    <span x-show="language === 'en'">Modern Kitchen Design</span>
+                    <span x-show="language === 'ar'">تصميم مطبخ حديث</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Clean lines and contemporary finishes</span>
+                    <span x-show="language === 'ar'">خطوط نظيفة وانتهاءات معاصرة</span>
+                </p>
+            </div>
+            
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo2.jpeg' %}" alt="Rustic Kitchen" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
+                    <span x-show="language === 'en'">Rustic Farmhouse Style</span>
+                    <span x-show="language === 'ar'">نمط المزرعة الريفي</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Warm wood tones and traditional charm</span>
+                    <span x-show="language === 'ar'">درجات خشبية دافئة وسحر تقليدي</span>
+                </p>
+            </div>
+            
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo3.jpeg' %}" alt="Contemporary Kitchen" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
+                    <span x-show="language === 'en'">Contemporary Elegance</span>
+                    <span x-show="language === 'ar'">أناقة معاصرة</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Sophisticated design with premium materials</span>
+                    <span x-show="language === 'ar'">تصميم متطور بمواد متميزة</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom Furniture -->
+<section class="py-20 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-4">
+                <span x-show="language === 'en'">Custom Furniture</span>
+                <span x-show="language === 'ar'">الأثاث المخصص</span>
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">Unique furniture pieces crafted to perfection, combining beauty with functionality</span>
+                <span x-show="language === 'ar'">قطع أثاث فريدة مصنوعة بكمال، تجمع بين الجمال والوظائف</span>
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo4.jpeg' %}" alt="Custom Library" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4">
+                    <span x-show="language === 'en'">Library Built-ins</span>
+                    <span x-show="language === 'ar'">خزائن مكتبة مدمجة</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Elegant storage for book collections</span>
+                    <span x-show="language === 'ar'">تخزين أنيق لمجموعات الكتب</span>
+                </p>
+            </div>
+            
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo5.jpeg' %}" alt="Dining Set" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4">
+                    <span x-show="language === 'en'">Custom Dining Set</span>
+                    <span x-show="language === 'ar'">طقم طعام مخصص</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Handcrafted dining room ensemble</span>
+                    <span x-show="language === 'ar'">مجموعة غرفة طعام مصنوعة يدوياً</span>
+                </p>
+            </div>
+            
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo6.jpeg' %}" alt="Custom Wardrobe" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4">
+                    <span x-show="language === 'en'">Custom Wardrobe</span>
+                    <span x-show="language === 'ar'">خزانة ملابس مخصصة</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Bespoke bedroom storage solution</span>
+                    <span x-show="language === 'ar'">حل تخزين غرفة نوم مخصص</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Architectural Millwork -->
+<section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                <span x-show="language === 'en'">Architectural Millwork</span>
+                <span x-show="language === 'ar'">الأعمال الخشبية المعمارية</span>
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">Architectural elements that add character and sophistication to any space</span>
+                <span x-show="language === 'ar'">عناصر معمارية تضيف الشخصية والأناقة إلى أي مساحة</span>
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo1.jpeg' %}" alt="Custom Staircase" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
+                    <span x-show="language === 'en'">Custom Staircase</span>
+                    <span x-show="language === 'ar'">درج مخصص</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Elegant staircase as architectural centerpiece</span>
+                    <span x-show="language === 'ar'">درج أنيق كقطعة معمارية مركزية</span>
+                </p>
+            </div>
+            
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo3.jpeg' %}" alt="Ceiling Beams" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
+                    <span x-show="language === 'en'">Ceiling Beams</span>
+                    <span x-show="language === 'ar'">عوارض السقف</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Exposed beams adding rustic character</span>
+                    <span x-show="language === 'ar'">عوارض مكشوفة تضيف طابعاً ريفياً</span>
+                </p>
+            </div>
+            
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo4.jpeg' %}" alt="Wainscoting" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
+                    <span x-show="language === 'en'">Wainscoting & Paneling</span>
+                    <span x-show="language === 'ar'">اللوحات الخشبية والتلوين</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Traditional paneling for timeless appeal</span>
+                    <span x-show="language === 'ar'">تلوين تقليدي لجاذبية خالدة</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 bg-card">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-6">
+            <span x-show="language === 'en'">Ready to Start Your Project?</span>
+            <span x-show="language === 'ar'">مستعد لبدء مشروعك؟</span>
+        </h2>
+        <p class="text-lg text-muted-foreground mb-8">
+            <span x-show="language === 'en'">Let's create something extraordinary together. Contact us to discuss your custom millwork vision.</span>
+            <span x-show="language === 'ar'">دعنا ننشئ شيئاً استثنائياً معاً. اتصل بنا لمناقشة رؤية أعمالك الخشبية المخصصة.</span>
+        </p>
+        <a href="{% url 'contact' %}" class="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 rounded-lg font-medium transition-colors">
+            <span x-show="language === 'en'">Get Started Today</span>
+            <span x-show="language === 'ar'">ابدأ اليوم</span>
+        </a>
+    </div>
+</section>
+{% endblock %}

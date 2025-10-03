@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Services - Premium Millwork Solutions{% endblock %}
+{% block description %}Comprehensive millwork services including custom kitchen cabinets, furniture, architectural millwork, and office solutions.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-card to-background py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-card-foreground leading-tight mb-6">
+                <span x-show="language === 'en'">Our Services</span>
+                <span x-show="language === 'ar'">خدماتنا</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                <span x-show="language === 'en'">From concept to completion, we provide comprehensive millwork solutions tailored to your unique needs and vision.</span>
+                <span x-show="language === 'ar'">من المفهوم إلى الإنجاز، نقدم حلول أعمال خشبية شاملة مصممة خصيصاً لاحتياجاتك ورؤيتك الفريدة.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Kitchen Cabinets -->
+            <div class="bg-card rounded-lg p-8 hover:shadow-lg transition-shadow">
+                <img src="{% static 'images/kitchen-cabinets.jpg' %}" alt="Kitchen Cabinets" class="w-full h-48 object-cover rounded-lg">
+                <h3 class="text-2xl font-heading font-bold text-card-foreground mt-6 mb-4">
+                    <span x-show="language === 'en'">Kitchen Cabinets</span>
+                    <span x-show="language === 'ar'">خزائن المطبخ</span>
+                </h3>
+                <p class="text-muted-foreground mb-6">
+                    <span x-show="language === 'en'">Custom kitchen cabinets designed to maximize storage, functionality, and style. From traditional to contemporary, we create the perfect solution for your culinary space.</span>
+                    <span x-show="language === 'ar'">خزائن مطبخ مخصصة مصممة لتعظيم التخزين والوظائف والأناقة. من التقليدية إلى المعاصرة، ننشئ الحل المثالي لمساحتك الطهوية.</span>
+                </p>
+                <ul class="space-y-2 text-muted-foreground">
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Custom design and layout</span>
+                        <span x-show="language === 'ar'">تصميم وتخطيط مخصص</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Premium materials</span>
+                        <span x-show="language === 'ar'">مواد متميزة</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Professional installation</span>
+                        <span x-show="language === 'ar'">تركيب احترافي</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Custom Furniture -->
+            <div class="bg-card rounded-lg p-8 hover:shadow-lg transition-shadow">
+                <img src="{% static 'images/custom-furniture.jpg' %}" alt="Custom Furniture" class="w-full h-48 object-cover rounded-lg">
+                <h3 class="text-2xl font-heading font-bold text-card-foreground mt-6 mb-4">
+                    <span x-show="language === 'en'">Custom Furniture</span>
+                    <span x-show="language === 'ar'">الأثاث المخصص</span>
+                </h3>
+                <p class="text-muted-foreground mb-6">
+                    <span x-show="language === 'en'">Unique furniture pieces crafted to fit your space perfectly. From dining sets to bedroom suites, we create functional art that reflects your personal style.</span>
+                    <span x-show="language === 'ar'">قطع أثاث فريدة مصنوعة لتناسب مساحتك تماماً. من طقم الطعام إلى طقم غرفة النوم، ننشئ فناً وظيفياً يعكس أسلوبك الشخصي.</span>
+                </p>
+                <ul class="space-y-2 text-muted-foreground">
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Bespoke design</span>
+                        <span x-show="language === 'ar'">تصميم مخصص</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Handcrafted quality</span>
+                        <span x-show="language === 'ar'">جودة مصنوعة يدوياً</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Lifetime durability</span>
+                        <span x-show="language === 'ar'">متانة مدى الحياة</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Architectural Millwork -->
+            <div class="bg-card rounded-lg p-8 hover:shadow-lg transition-shadow">
+                <img src="{% static 'images/architectural-millwork.jpg' %}" alt="Architectural Millwork" class="w-full h-48 object-cover rounded-lg">
+                <h3 class="text-2xl font-heading font-bold text-card-foreground mt-6 mb-4">
+                    <span x-show="language === 'en'">Architectural Millwork</span>
+                    <span x-show="language === 'ar'">الأعمال الخشبية المعمارية</span>
+                </h3>
+                <p class="text-muted-foreground mb-6">
+                    <span x-show="language === 'en'">Architectural elements that add character and sophistication to any space. Crown molding, wainscoting, built-ins, and custom trim work.</span>
+                    <span x-show="language === 'ar'">عناصر معمارية تضيف الشخصية والأناقة إلى أي مساحة. إطارات التاج، اللوحات الخشبية، الخزائن المدمجة، وأعمال التشذيب المخصصة.</span>
+                </p>
+                <ul class="space-y-2 text-muted-foreground">
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Crown molding & trim</span>
+                        <span x-show="language === 'ar'">إطارات التاج والتشذيب</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Built-in storage</span>
+                        <span x-show="language === 'ar'">تخزين مدمج</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Wainscoting & paneling</span>
+                        <span x-show="language === 'ar'">اللوحات الخشبية والتلوين</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Office Furniture -->
+            <div class="bg-card rounded-lg p-8 hover:shadow-lg transition-shadow">
+                <img src="{% static 'images/office-furniture.jpg' %}" alt="Office Furniture" class="w-full h-48 object-cover rounded-lg">
+                <h3 class="text-2xl font-heading font-bold text-card-foreground mt-6 mb-4">
+                    <span x-show="language === 'en'">Office Solutions</span>
+                    <span x-show="language === 'ar'">حلول المكاتب</span>
+                </h3>
+                <p class="text-muted-foreground mb-6">
+                    <span x-show="language === 'en'">Professional office furniture and built-ins designed to enhance productivity and create an inspiring work environment.</span>
+                    <span x-show="language === 'ar'">أثاث مكاتب احترافي وخزائن مدمجة مصممة لتعزيز الإنتاجية وإنشاء بيئة عمل ملهمة.</span>
+                </p>
+                <ul class="space-y-2 text-muted-foreground">
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Executive desks</span>
+                        <span x-show="language === 'ar'">مكاتب تنفيذية</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Storage systems</span>
+                        <span x-show="language === 'ar'">أنظمة التخزين</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span x-show="language === 'en'">Conference tables</span>
+                        <span x-show="language === 'ar'">طاولات المؤتمرات</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-20 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-4">
+                <span x-show="language === 'en'">Our Process</span>
+                <span x-show="language === 'ar'">عملية العمل</span>
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">From initial consultation to final installation, we ensure every step meets our high standards</span>
+                <span x-show="language === 'ar'">من الاستشارة الأولية إلى التركيب النهائي، نضمن أن كل خطوة تلبي معاييرنا العالية</span>
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                <h3 class="text-lg font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Consultation</span>
+                    <span x-show="language === 'ar'">استشارة</span>
+                </h3>
+                <p class="text-muted-foreground text-sm">
+                    <span x-show="language === 'en'">We discuss your vision, needs, and budget</span>
+                    <span x-show="language === 'ar'">نناقش رؤيتك واحتياجاتك وميزانيتك</span>
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                <h3 class="text-lg font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Design</span>
+                    <span x-show="language === 'ar'">تصميم</span>
+                </h3>
+                <p class="text-muted-foreground text-sm">
+                    <span x-show="language === 'en'">Custom designs and detailed plans</span>
+                    <span x-show="language === 'ar'">تصاميم مخصصة وخطط مفصلة</span>
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                <h3 class="text-lg font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Crafting</span>
+                    <span x-show="language === 'ar'">صناعة</span>
+                </h3>
+                <p class="text-muted-foreground text-sm">
+                    <span x-show="language === 'en'">Expert craftsmanship and quality materials</span>
+                    <span x-show="language === 'ar'">حرفية خبيرة ومواد عالية الجودة</span>
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                <h3 class="text-lg font-heading font-semibold text-card-foreground mb-2">
+                    <span x-show="language === 'en'">Installation</span>
+                    <span x-show="language === 'ar'">تركيب</span>
+                </h3>
+                <p class="text-muted-foreground text-sm">
+                    <span x-show="language === 'en'">Professional installation and finishing</span>
+                    <span x-show="language === 'ar'">تركيب احترافي وإنهاء</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

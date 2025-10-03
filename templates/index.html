@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Royal Aluminium and UPVC Qatar - Premium Windows & Doors{% endblock %}
+{% block description %}Professional aluminium and UPVC services in Qatar specializing in windows, doors, facades, and architectural solutions. Premium quality and craftsmanship.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-card to-background py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-card-foreground leading-tight">
+                    <span x-show="language === 'en'">Premium Aluminium & UPVC Solutions</span>
+                    <span x-show="language === 'ar'">حلول الألمنيوم واليو بي في سي المتميزة</span>
+                </h1>
+                <p class="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                    <span x-show="language === 'en'">Transform your space with our premium aluminium and UPVC solutions. From energy-efficient windows to stunning facades, we bring your vision to life with unmatched quality and craftsmanship.</span>
+                    <span x-show="language === 'ar'">حوّل مساحتك مع حلولنا المتميزة من الألمنيوم واليو بي في سي. من النوافذ الموفرة للطاقة إلى الواجهات المذهلة، نحقق رؤيتك بجودة وحرفية لا مثيل لها.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="{% url 'portfolio' %}" class="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium transition-colors text-center">
+                        <span x-show="language === 'en'">View Our Portfolio</span>
+                        <span x-show="language === 'ar'">اطلع على معرض أعمالنا</span>
+                    </a>
+                    <a href="{% url 'contact' %}" class="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 rounded-lg font-medium transition-colors text-center">
+                        <span x-show="language === 'en'">Get Quote</span>
+                        <span x-show="language === 'ar'">احصل على عرض سعر</span>
+                    </a>
+                </div>
+            </div>
+                <div style="width: 100%; height: 400px;">
+                    <img src="{% static 'images/demo1.jpeg' %}" 
+                         alt="Premium Aluminium Windows and Doors in Qatar - Royal Aluminium & UPVC Solutions" 
+                         title="Professional aluminium windows and UPVC doors installation in Qatar"
+                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block;" 
+                         loading="eager"
+                         onload="console.log('Image loaded successfully')" 
+                         onerror="this.src='{% static 'images/hero-kitchen.jpg' %}'; console.error('Image failed to load, using fallback')">
+                </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview -->
+<section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                <span x-show="language === 'en'">Our Specialties</span>
+                <span x-show="language === 'ar'">تخصصاتنا</span>
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">We specialize in creating premium aluminium and UPVC solutions that combine energy efficiency with stunning aesthetics</span>
+                <span x-show="language === 'ar'">نتخصص في إنشاء حلول الألمنيوم واليو بي في سي المتميزة التي تجمع بين كفاءة الطاقة والجماليات المذهلة</span>
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {% for service in services %}
+                <div class="bg-card rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    {% if service.image and service.image.url %}
+                        <img src="{{ service.image.url }}" alt="{{ service.name }}" class="w-full h-48 object-cover rounded-lg">
+                    {% else %}
+                        <img src="{% static 'images/demo1.jpeg' %}" alt="{{ service.name }}" class="w-full h-48 object-cover rounded-lg">
+                    {% endif %}
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4 mb-2">
+                    <span x-show="language === 'en'">{{ service.name }}</span>
+                    <span x-show="language === 'ar'">{{ service.name_arabic|default:service.name }}</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">{{ service.description }}</span>
+                    <span x-show="language === 'ar'">{{ service.description_arabic|default:service.description }}</span>
+                </p>
+            </div>
+            {% empty %}
+            <!-- Fallback content if no services -->
+            <div class="bg-card rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <img src="{% static 'images/demo1.jpeg' %}" alt="Aluminium Windows" class="w-full h-48 object-cover rounded-lg">
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4 mb-2">
+                    <span x-show="language === 'en'">Aluminium Windows</span>
+                    <span x-show="language === 'ar'">نوافذ الألمنيوم</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Energy-efficient aluminium windows designed for Qatar's climate</span>
+                    <span x-show="language === 'ar'">نوافذ ألمنيوم موفرة للطاقة مصممة لمناخ قطر</span>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Preview -->
+<section class="py-20 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-4">
+                <span x-show="language === 'en'">Featured Projects</span>
+                <span x-show="language === 'ar'">مشاريع مميزة</span>
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <span x-show="language === 'en'">Discover some of our most impressive aluminium and UPVC projects across Qatar</span>
+                <span x-show="language === 'ar'">اكتشف بعض من أكثر مشاريعنا المخصصة من الألمنيوم واليو بي في سي إثارة للإعجاب في قطر</span>
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {% for project in featured_projects %}
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-lg">
+                        {% if project.image and project.image.url %}
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        {% else %}
+                            <img src="{% static 'images/demo2.jpeg' %}" alt="{{ project.title }}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        {% endif %}
+                    </div>
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4">
+                    <span x-show="language === 'en'">{{ project.title }}</span>
+                    <span x-show="language === 'ar'">{{ project.title_arabic|default:project.title }}</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">{{ project.description|truncatewords:10 }}</span>
+                    <span x-show="language === 'ar'">{{ project.description_arabic|default:project.description|truncatewords:10 }}</span>
+                </p>
+            </div>
+            {% empty %}
+            <!-- Fallback content if no featured projects -->
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="{% static 'images/demo4.jpeg' %}" alt="Modern Project" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4">
+                    <span x-show="language === 'en'">Modern Aluminium Windows</span>
+                    <span x-show="language === 'ar'">نوافذ ألمنيوم حديثة</span>
+                </h3>
+                <p class="text-muted-foreground">
+                    <span x-show="language === 'en'">Contemporary design meets energy efficiency</span>
+                    <span x-show="language === 'ar'">التصميم المعاصر يلتقي بكفاءة الطاقة</span>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="{% url 'portfolio' %}" class="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium transition-colors">
+                <span x-show="language === 'en'">View All Projects</span>
+                <span x-show="language === 'ar'">عرض جميع المشاريع</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 bg-background">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+            <span x-show="language === 'en'">Ready to Transform Your Space?</span>
+            <span x-show="language === 'ar'">مستعد لتحويل مساحتك؟</span>
+        </h2>
+        <p class="text-lg text-muted-foreground mb-8">
+            <span x-show="language === 'en'">Let's discuss your aluminium and UPVC project and bring your vision to life</span>
+            <span x-show="language === 'ar'">دعنا نناقش مشروع الألمنيوم واليو بي في سي ونحقق رؤيتك</span>
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 rounded-lg font-medium transition-colors">
+                <span x-show="language === 'en'">Start Your Project</span>
+                <span x-show="language === 'ar'">ابدأ مشروعك</span>
+            </a>
+            <a href="{% url 'services' %}" class="border border-border text-foreground hover:bg-card px-8 py-3 rounded-lg font-medium transition-colors">
+                <span x-show="language === 'en'">Our Services</span>
+                <span x-show="language === 'ar'">خدماتنا</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

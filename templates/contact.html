@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Get Your Custom Millwork Quote{% endblock %}
+{% block description %}Contact CraftWood for your custom millwork needs. Get a free quote for kitchen cabinets, furniture, and architectural millwork.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-card to-background py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-card-foreground leading-tight mb-6">
+                <span x-show="language === 'en'">Contact Us</span>
+                <span x-show="language === 'ar'">اتصل بنا</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                <span x-show="language === 'en'">Ready to transform your space with custom millwork? Let's discuss your project and bring your vision to life.</span>
+                <span x-show="language === 'ar'">مستعد لتحويل مساحتك بأعمال خشبية مخصصة؟ دعنا نناقش مشروعك ونحقق رؤيتك.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form & Info -->
+<section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div class="bg-card rounded-lg p-8">
+                <h2 class="text-2xl font-heading font-bold text-card-foreground mb-6">
+                    <span x-show="language === 'en'">Get Your Free Quote</span>
+                    <span x-show="language === 'ar'">احصل على عرض سعر مجاني</span>
+                </h2>
+                <form method="post" class="space-y-6">
+                    {% csrf_token %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-card-foreground mb-2">
+                                <span x-show="language === 'en'">First Name</span>
+                                <span x-show="language === 'ar'">الاسم الأول</span>
+                            </label>
+                            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-card-foreground mb-2">
+                                <span x-show="language === 'en'">Last Name</span>
+                                <span x-show="language === 'ar'">الاسم الأخير</span>
+                            </label>
+                            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-card-foreground mb-2">
+                            Email
+                        </label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground">
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-card-foreground mb-2">
+                            <span x-show="language === 'en'">Phone Number</span>
+                            <span x-show="language === 'ar'">رقم الهاتف</span>
+                        </label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground">
+                    </div>
+                    
+                    <div>
+                        <label for="projectType" class="block text-sm font-medium text-card-foreground mb-2">
+                            <span x-show="language === 'en'">Project Type</span>
+                            <span x-show="language === 'ar'">نوع المشروع</span>
+                        </label>
+                        <select id="projectType" name="projectType" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground">
+                            <option value="">
+                                <span x-show="language === 'en'">Select a project type</span>
+                                <span x-show="language === 'ar'">اختر نوع المشروع</span>
+                            </option>
+                            <option value="kitchen">
+                                <span x-show="language === 'en'">Kitchen Cabinets</span>
+                                <span x-show="language === 'ar'">خزائن المطبخ</span>
+                            </option>
+                            <option value="furniture">
+                                <span x-show="language === 'en'">Custom Furniture</span>
+                                <span x-show="language === 'ar'">الأثاث المخصص</span>
+                            </option>
+                            <option value="architectural">
+                                <span x-show="language === 'en'">Architectural Millwork</span>
+                                <span x-show="language === 'ar'">الأعمال الخشبية المعمارية</span>
+                            </option>
+                            <option value="office">
+                                <span x-show="language === 'en'">Office Solutions</span>
+                                <span x-show="language === 'ar'">حلول المكاتب</span>
+                            </option>
+                            <option value="other">
+                                <span x-show="language === 'en'">Other</span>
+                                <span x-show="language === 'ar'">أخرى</span>
+                            </option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-card-foreground mb-2">
+                            <span x-show="language === 'en'">Budget Range</span>
+                            <span x-show="language === 'ar'">نطاق الميزانية</span>
+                        </label>
+                        <select id="budget" name="budget" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground">
+                            <option value="">
+                                <span x-show="language === 'en'">Select budget range</span>
+                                <span x-show="language === 'ar'">اختر نطاق الميزانية</span>
+                            </option>
+                            <option value="under-10k">
+                                <span x-show="language === 'en'">Under $10,000</span>
+                                <span x-show="language === 'ar'">أقل من 10,000 دولار</span>
+                            </option>
+                            <option value="10k-25k">
+                                <span x-show="language === 'en'">$10,000 - $25,000</span>
+                                <span x-show="language === 'ar'">10,000 - 25,000 دولار</span>
+                            </option>
+                            <option value="25k-50k">
+                                <span x-show="language === 'en'">$25,000 - $50,000</span>
+                                <span x-show="language === 'ar'">25,000 - 50,000 دولار</span>
+                            </option>
+                            <option value="over-50k">
+                                <span x-show="language === 'en'">Over $50,000</span>
+                                <span x-show="language === 'ar'">أكثر من 50,000 دولار</span>
+                            </option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-card-foreground mb-2">
+                            <span x-show="language === 'en'">Project Details</span>
+                            <span x-show="language === 'ar'">تفاصيل المشروع</span>
+                        </label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 rounded-lg font-medium transition-colors">
+                        <span x-show="language === 'en'">Send Message</span>
+                        <span x-show="language === 'ar'">إرسال الرسالة</span>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-2xl font-heading font-bold text-foreground mb-6">
+                        <span x-show="language === 'en'">Get In Touch</span>
+                        <span x-show="language === 'ar'">تواصل معنا</span>
+                    </h2>
+                    <p class="text-lg text-muted-foreground mb-8">
+                        <span x-show="language === 'en'">We're here to help bring your millwork vision to life. Contact us through any of the methods below.</span>
+                        <span x-show="language === 'ar'">نحن هنا لمساعدتك في تحقيق رؤية أعمالك الخشبية. تواصل معنا من خلال أي من الطرق أدناه.</span>
+                    </p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-heading font-semibold text-foreground mb-1">
+                                <span x-show="language === 'en'">Phone</span>
+                                <span x-show="language === 'ar'">الهاتف</span>
+                            </h3>
+                            <p class="text-muted-foreground">+1 (555) 123-4567</p>
+                            <p class="text-sm text-muted-foreground">
+                                <span x-show="language === 'en'">Mon-Fri: 8AM-6PM</span>
+                                <span x-show="language === 'ar'">الاثنين-الجمعة: 8 صباحاً-6 مساءً</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-heading font-semibold text-foreground mb-1">
+                                Email
+                            </h3>
+                            <p class="text-muted-foreground">info@craftwood.com</p>
+                            <p class="text-sm text-muted-foreground">
+                                <span x-show="language === 'en'">We'll respond within 24 hours</span>
+                                <span x-show="language === 'ar'">سنرد خلال 24 ساعة</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-heading font-semibold text-foreground mb-1">
+                                <span x-show="language === 'en'">Address</span>
+                                <span x-show="language === 'ar'">العنوان</span>
+                            </h3>
+                            <p class="text-muted-foreground">
+                                123 Wood Street<br>
+                                Craft City, CC 12345<br>
+                                United States
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Business Hours -->
+                <div class="bg-card rounded-lg p-6">
+                    <h3 class="text-lg font-heading font-semibold text-card-foreground mb-4">
+                        <span x-show="language === 'en'">Business Hours</span>
+                        <span x-show="language === 'ar'">ساعات العمل</span>
+                    </h3>
+                    <div class="space-y-2 text-muted-foreground">
+                        <div class="flex justify-between">
+                            <span>
+                                <span x-show="language === 'en'">Monday - Friday</span>
+                                <span x-show="language === 'ar'">الاثنين - الجمعة</span>
+                            </span>
+                            <span>8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>
+                                <span x-show="language === 'en'">Saturday</span>
+                                <span x-show="language === 'ar'">السبت</span>
+                            </span>
+                            <span>9:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>
+                                <span x-show="language === 'en'">Sunday</span>
+                                <span x-show="language === 'ar'">الأحد</span>
+                            </span>
+                            <span>
+                                <span x-show="language === 'en'">Closed</span>
+                                <span x-show="language === 'ar'">مغلق</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
