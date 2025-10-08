@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://royalaluminiumupvcqatar.com",
+    "https://www.royalaluminiumupvcqatar.com",
+]
 
 # Application definition
 
