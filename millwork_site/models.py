@@ -34,7 +34,7 @@ class Project(models.Model):
     title_arabic = models.CharField(max_length=200, blank=True)
     description = models.TextField()
     description_arabic = models.TextField(blank=True)
-    image = models.ImageField(upload_to='projects/')
+    image = models.ImageField(upload_to='projects/', help_text="Main display image")
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     is_featured = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -47,6 +47,23 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+class ProjectImage(models.Model):
+    """Model for additional project images (for slider)"""
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='additional_images')
+    image = models.ImageField(upload_to='projects/gallery/')
+    caption = models.CharField(max_length=200, blank=True)
+    caption_arabic = models.CharField(max_length=200, blank=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'created_at']
+        verbose_name = "Project Image"
+        verbose_name_plural = "Project Images"
+
+    def __str__(self):
+        return f"{self.project.title} - Image {self.order}"
 
 class TeamMember(models.Model):
     """Model for team members"""
@@ -78,6 +95,21 @@ class CompanyInfo(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     whatsapp = models.CharField(max_length=20, blank=True)
+    
+    # Business Hours
+    weekday_hours = models.CharField(max_length=100, default="8:00 AM - 6:00 PM", help_text="Monday to Friday hours")
+    weekday_hours_arabic = models.CharField(max_length=100, blank=True, help_text="Monday to Friday hours in Arabic")
+    saturday_hours = models.CharField(max_length=100, default="9:00 AM - 4:00 PM", help_text="Saturday hours")
+    saturday_hours_arabic = models.CharField(max_length=100, blank=True, help_text="Saturday hours in Arabic")
+    sunday_hours = models.CharField(max_length=100, default="Closed", help_text="Sunday hours (e.g., 'Closed' or time)")
+    sunday_hours_arabic = models.CharField(max_length=100, default="مغلق", help_text="Sunday hours in Arabic")
+    
+    # Service Areas
+    service_areas = models.TextField(blank=True, help_text="Comma-separated list of areas served (e.g., Doha, Lusail, West Bay)")
+    service_areas_arabic = models.TextField(blank=True, help_text="Comma-separated list of areas in Arabic")
+    showroom_address = models.CharField(max_length=500, blank=True, help_text="Physical showroom/office address")
+    showroom_address_arabic = models.CharField(max_length=500, blank=True)
+    
     logo = models.ImageField(upload_to='company/', blank=True, null=True)
     hero_image = models.ImageField(upload_to='company/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -164,3 +196,69 @@ class PageContent(models.Model):
 
     def __str__(self):
         return f"{self.get_page_display()} Page Content"
+
+class CompanyStatistics(models.Model):
+    """Model for company statistics displayed on home page"""
+    years_in_business = models.PositiveIntegerField(default=8, help_text="Years in business")
+    projects_completed = models.PositiveIntegerField(default=500, help_text="Total projects completed")
+    happy_clients = models.PositiveIntegerField(default=350, help_text="Number of satisfied clients")
+    team_members = models.PositiveIntegerField(default=15, help_text="Number of team members")
+    
+    # Labels (customizable)
+    years_label = models.CharField(max_length=100, default="Years of Excellence")
+    years_label_arabic = models.CharField(max_length=100, default="سنوات من التميز")
+    projects_label = models.CharField(max_length=100, default="Projects Completed")
+    projects_label_arabic = models.CharField(max_length=100, default="مشاريع مكتملة")
+    clients_label = models.CharField(max_length=100, default="Happy Clients")
+    clients_label_arabic = models.CharField(max_length=100, default="عملاء سعداء")
+    team_label = models.CharField(max_length=100, default="Expert Team")
+    team_label_arabic = models.CharField(max_length=100, default="فريق خبراء")
+    
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Company Statistics"
+        verbose_name_plural = "Company Statistics"
+
+    def __str__(self):
+        return "Company Statistics"
+
+class WhyChooseUsItem(models.Model):
+    """Model for 'Why Choose Us' section items"""
+    title = models.CharField(max_length=200)
+    title_arabic = models.CharField(max_length=200, blank=True)
+    description = models.TextField()
+    description_arabic = models.TextField(blank=True)
+    icon = models.CharField(max_length=50, blank=True, help_text="Icon class or SVG identifier")
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0, help_text="Display order")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'title']
+        verbose_name = "Why Choose Us Item"
+        verbose_name_plural = "Why Choose Us Items"
+
+    def __str__(self):
+        return self.title
+
+class Certification(models.Model):
+    """Model for certifications and trust badges"""
+    name = models.CharField(max_length=200)
+    name_arabic = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
+    description_arabic = models.TextField(blank=True)
+    logo = models.ImageField(upload_to='certifications/', blank=True, null=True, help_text="Certification logo or badge")
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0, help_text="Display order")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'name']
+        verbose_name = "Certification"
+        verbose_name_plural = "Certifications"
+
+    def __str__(self):
+        return self.name

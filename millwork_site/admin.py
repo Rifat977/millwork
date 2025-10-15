@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (
-    Service, Project, TeamMember, CompanyInfo, 
-    Testimonial, ContactMessage, PageContent
+    Service, Project, ProjectImage, TeamMember, CompanyInfo, 
+    Testimonial, ContactMessage, PageContent,
+    CompanyStatistics, WhyChooseUsItem, Certification
 )
 
 @admin.register(Service)
@@ -21,6 +22,12 @@ class ServiceAdmin(admin.ModelAdmin):
         }),
     )
 
+class ProjectImageInline(admin.TabularInline):
+    model = ProjectImage
+    extra = 1
+    fields = ['image', 'caption', 'caption_arabic', 'order']
+    ordering = ['order']
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['title', 'category', 'is_featured', 'is_active', 'order', 'created_at']
@@ -28,13 +35,15 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ['title', 'title_arabic', 'description']
     list_editable = ['is_featured', 'is_active', 'order']
     ordering = ['order', '-created_at']
+    inlines = [ProjectImageInline]
     
     fieldsets = (
         ('Project Information', {
             'fields': ('title', 'title_arabic', 'description', 'description_arabic')
         }),
         ('Media & Category', {
-            'fields': ('image', 'category')
+            'fields': ('image', 'category'),
+            'description': 'Main image is the primary display. Add additional images in the "Project Images" section below for slider.'
         }),
         ('Display Settings', {
             'fields': ('is_featured', 'is_active', 'order')
@@ -71,6 +80,12 @@ class CompanyInfoAdmin(admin.ModelAdmin):
         }),
         ('Contact Information', {
             'fields': ('phone', 'email', 'whatsapp')
+        }),
+        ('Business Hours', {
+            'fields': ('weekday_hours', 'weekday_hours_arabic', 'saturday_hours', 'saturday_hours_arabic', 'sunday_hours', 'sunday_hours_arabic')
+        }),
+        ('Service Areas & Showroom', {
+            'fields': ('service_areas', 'service_areas_arabic', 'showroom_address', 'showroom_address_arabic')
         }),
         ('About Content', {
             'fields': ('description', 'description_arabic')
@@ -141,6 +156,70 @@ class PageContentAdmin(admin.ModelAdmin):
         }),
         ('Page Content (Arabic)', {
             'fields': ('content_arabic', 'meta_description_arabic')
+        }),
+    )
+
+@admin.register(CompanyStatistics)
+class CompanyStatisticsAdmin(admin.ModelAdmin):
+    list_display = ['years_in_business', 'projects_completed', 'happy_clients', 'team_members', 'updated_at']
+    
+    fieldsets = (
+        ('Statistics Numbers', {
+            'fields': ('years_in_business', 'projects_completed', 'happy_clients', 'team_members')
+        }),
+        ('Labels (English)', {
+            'fields': ('years_label', 'projects_label', 'clients_label', 'team_label')
+        }),
+        ('Labels (Arabic)', {
+            'fields': ('years_label_arabic', 'projects_label_arabic', 'clients_label_arabic', 'team_label_arabic')
+        }),
+    )
+    
+    def has_add_permission(self, request):
+        # Only allow one statistics record
+        return not CompanyStatistics.objects.exists()
+    
+    def has_delete_permission(self, request, obj=None):
+        # Prevent deletion of statistics
+        return False
+
+@admin.register(WhyChooseUsItem)
+class WhyChooseUsItemAdmin(admin.ModelAdmin):
+    list_display = ['title', 'is_active', 'order', 'created_at']
+    list_filter = ['is_active', 'created_at']
+    search_fields = ['title', 'title_arabic', 'description']
+    list_editable = ['is_active', 'order']
+    ordering = ['order', 'title']
+    
+    fieldsets = (
+        ('Content (English)', {
+            'fields': ('title', 'description')
+        }),
+        ('Content (Arabic)', {
+            'fields': ('title_arabic', 'description_arabic')
+        }),
+        ('Display Settings', {
+            'fields': ('icon', 'is_active', 'order')
+        }),
+    )
+
+@admin.register(Certification)
+class CertificationAdmin(admin.ModelAdmin):
+    list_display = ['name', 'is_active', 'order', 'created_at']
+    list_filter = ['is_active', 'created_at']
+    search_fields = ['name', 'name_arabic', 'description']
+    list_editable = ['is_active', 'order']
+    ordering = ['order', 'name']
+    
+    fieldsets = (
+        ('Certification Information (English)', {
+            'fields': ('name', 'description')
+        }),
+        ('Certification Information (Arabic)', {
+            'fields': ('name_arabic', 'description_arabic')
+        }),
+        ('Media & Settings', {
+            'fields': ('logo', 'is_active', 'order')
         }),
     )
 

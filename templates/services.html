@@ -25,149 +25,68 @@
 <section class="py-20 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <!-- Kitchen Cabinets -->
-            <div class="bg-card rounded-lg p-8 hover:shadow-lg transition-shadow">
-                <img src="{% static 'images/kitchen-cabinets.jpg' %}" alt="Kitchen Cabinets" class="w-full h-48 object-cover rounded-lg">
-                <h3 class="text-2xl font-heading font-bold text-card-foreground mt-6 mb-4">
-                    <span x-show="language === 'en'">Kitchen Cabinets</span>
-                    <span x-show="language === 'ar'">خزائن المطبخ</span>
-                </h3>
-                <p class="text-muted-foreground mb-6">
-                    <span x-show="language === 'en'">Custom kitchen cabinets designed to maximize storage, functionality, and style. From traditional to contemporary, we create the perfect solution for your culinary space.</span>
-                    <span x-show="language === 'ar'">خزائن مطبخ مخصصة مصممة لتعظيم التخزين والوظائف والأناقة. من التقليدية إلى المعاصرة، ننشئ الحل المثالي لمساحتك الطهوية.</span>
-                </p>
-                <ul class="space-y-2 text-muted-foreground">
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Custom design and layout</span>
-                        <span x-show="language === 'ar'">تصميم وتخطيط مخصص</span>
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Premium materials</span>
-                        <span x-show="language === 'ar'">مواد متميزة</span>
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Professional installation</span>
-                        <span x-show="language === 'ar'">تركيب احترافي</span>
-                    </li>
-                </ul>
+            {% for service in services %}
+            <div class="bg-card rounded-lg overflow-hidden hover-lift animate-fade-in-up animate-delay-{{ forloop.counter|divisibleby:2|yesno:'100,200' }}">
+                {% if service.image and service.image.url %}
+                    <div class="w-full bg-primary/5">
+                        <img src="{{ service.image.url }}" alt="{{ service.name }}" class="w-full h-auto object-contain">
+                    </div>
+                {% else %}
+                    <div class="w-full h-64 bg-primary/10 flex items-center justify-center">
+                        {% if service.icon %}
+                            <i class="{{ service.icon }} text-6xl text-primary"></i>
+                        {% else %}
+                            <svg class="w-20 h-20 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <div class="p-8">
+                    <h3 class="text-2xl font-heading font-bold text-card-foreground mb-4">
+                        <span x-show="language === 'en'">{{ service.name }}</span>
+                        <span x-show="language === 'ar'">{{ service.name_arabic|default:service.name }}</span>
+                    </h3>
+                    <p class="text-muted-foreground">
+                        <span x-show="language === 'en'">{{ service.description }}</span>
+                        <span x-show="language === 'ar'">{{ service.description_arabic|default:service.description }}</span>
+                    </p>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Fallback content if no services -->
+            <div class="bg-card rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="w-full bg-primary/5">
+                    <img src="{% static 'images/kitchen-cabinets.jpg' %}" alt="Kitchen Cabinets" class="w-full h-auto object-contain">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-heading font-bold text-card-foreground mb-4">
+                        <span x-show="language === 'en'">Kitchen Cabinets</span>
+                        <span x-show="language === 'ar'">خزائن المطبخ</span>
+                    </h3>
+                    <p class="text-muted-foreground">
+                        <span x-show="language === 'en'">Custom kitchen cabinets designed to maximize storage, functionality, and style.</span>
+                        <span x-show="language === 'ar'">خزائن مطبخ مخصصة مصممة لتعظيم التخزين والوظائف والأناقة.</span>
+                    </p>
+                </div>
             </div>
 
-            <!-- Custom Furniture -->
-            <div class="bg-card rounded-lg p-8 hover:shadow-lg transition-shadow">
-                <img src="{% static 'images/custom-furniture.jpg' %}" alt="Custom Furniture" class="w-full h-48 object-cover rounded-lg">
-                <h3 class="text-2xl font-heading font-bold text-card-foreground mt-6 mb-4">
-                    <span x-show="language === 'en'">Custom Furniture</span>
-                    <span x-show="language === 'ar'">الأثاث المخصص</span>
-                </h3>
-                <p class="text-muted-foreground mb-6">
-                    <span x-show="language === 'en'">Unique furniture pieces crafted to fit your space perfectly. From dining sets to bedroom suites, we create functional art that reflects your personal style.</span>
-                    <span x-show="language === 'ar'">قطع أثاث فريدة مصنوعة لتناسب مساحتك تماماً. من طقم الطعام إلى طقم غرفة النوم، ننشئ فناً وظيفياً يعكس أسلوبك الشخصي.</span>
-                </p>
-                <ul class="space-y-2 text-muted-foreground">
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Bespoke design</span>
-                        <span x-show="language === 'ar'">تصميم مخصص</span>
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Handcrafted quality</span>
-                        <span x-show="language === 'ar'">جودة مصنوعة يدوياً</span>
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Lifetime durability</span>
-                        <span x-show="language === 'ar'">متانة مدى الحياة</span>
-                    </li>
-                </ul>
+            <div class="bg-card rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="w-full bg-primary/5">
+                    <img src="{% static 'images/custom-furniture.jpg' %}" alt="Custom Furniture" class="w-full h-auto object-contain">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-heading font-bold text-card-foreground mb-4">
+                        <span x-show="language === 'en'">Custom Furniture</span>
+                        <span x-show="language === 'ar'">الأثاث المخصص</span>
+                    </h3>
+                    <p class="text-muted-foreground">
+                        <span x-show="language === 'en'">Unique furniture pieces crafted to fit your space perfectly.</span>
+                        <span x-show="language === 'ar'">قطع أثاث فريدة مصنوعة لتناسب مساحتك تماماً.</span>
+                    </p>
+                </div>
             </div>
-
-            <!-- Architectural Millwork -->
-            <div class="bg-card rounded-lg p-8 hover:shadow-lg transition-shadow">
-                <img src="{% static 'images/architectural-millwork.jpg' %}" alt="Architectural Millwork" class="w-full h-48 object-cover rounded-lg">
-                <h3 class="text-2xl font-heading font-bold text-card-foreground mt-6 mb-4">
-                    <span x-show="language === 'en'">Architectural Millwork</span>
-                    <span x-show="language === 'ar'">الأعمال الخشبية المعمارية</span>
-                </h3>
-                <p class="text-muted-foreground mb-6">
-                    <span x-show="language === 'en'">Architectural elements that add character and sophistication to any space. Crown molding, wainscoting, built-ins, and custom trim work.</span>
-                    <span x-show="language === 'ar'">عناصر معمارية تضيف الشخصية والأناقة إلى أي مساحة. إطارات التاج، اللوحات الخشبية، الخزائن المدمجة، وأعمال التشذيب المخصصة.</span>
-                </p>
-                <ul class="space-y-2 text-muted-foreground">
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Crown molding & trim</span>
-                        <span x-show="language === 'ar'">إطارات التاج والتشذيب</span>
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Built-in storage</span>
-                        <span x-show="language === 'ar'">تخزين مدمج</span>
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Wainscoting & paneling</span>
-                        <span x-show="language === 'ar'">اللوحات الخشبية والتلوين</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Office Furniture -->
-            <div class="bg-card rounded-lg p-8 hover:shadow-lg transition-shadow">
-                <img src="{% static 'images/office-furniture.jpg' %}" alt="Office Furniture" class="w-full h-48 object-cover rounded-lg">
-                <h3 class="text-2xl font-heading font-bold text-card-foreground mt-6 mb-4">
-                    <span x-show="language === 'en'">Office Solutions</span>
-                    <span x-show="language === 'ar'">حلول المكاتب</span>
-                </h3>
-                <p class="text-muted-foreground mb-6">
-                    <span x-show="language === 'en'">Professional office furniture and built-ins designed to enhance productivity and create an inspiring work environment.</span>
-                    <span x-show="language === 'ar'">أثاث مكاتب احترافي وخزائن مدمجة مصممة لتعزيز الإنتاجية وإنشاء بيئة عمل ملهمة.</span>
-                </p>
-                <ul class="space-y-2 text-muted-foreground">
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Executive desks</span>
-                        <span x-show="language === 'ar'">مكاتب تنفيذية</span>
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Storage systems</span>
-                        <span x-show="language === 'ar'">أنظمة التخزين</span>
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span x-show="language === 'en'">Conference tables</span>
-                        <span x-show="language === 'ar'">طاولات المؤتمرات</span>
-                    </li>
-                </ul>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

@@ -6,7 +6,8 @@ from django.urls import reverse
 from django.utils import timezone
 from .models import (
     Service, Project, TeamMember, CompanyInfo, 
-    Testimonial, ContactMessage, PageContent
+    Testimonial, ContactMessage, PageContent,
+    CompanyStatistics, WhyChooseUsItem, Certification
 )
 
 def home(request):
@@ -15,8 +16,10 @@ def home(request):
         'services': Service.objects.filter(is_active=True)[:3],
         'featured_projects': Project.objects.filter(is_featured=True, is_active=True)[:3],
         'testimonials': Testimonial.objects.filter(is_active=True)[:3],
-        'company_info': CompanyInfo.objects.first(),
         'page_content': PageContent.objects.filter(page='home').first(),
+        'statistics': CompanyStatistics.objects.first(),
+        'why_choose_items': WhyChooseUsItem.objects.filter(is_active=True),
+        'certifications': Certification.objects.filter(is_active=True),
     }
     return render(request, 'index.html', context)
 
@@ -25,7 +28,6 @@ def about(request):
     context = {
         'team_members': TeamMember.objects.filter(is_active=True),
         'testimonials': Testimonial.objects.filter(is_active=True),
-        'company_info': CompanyInfo.objects.first(),
         'page_content': PageContent.objects.filter(page='about').first(),
     }
     return render(request, 'about.html', context)
@@ -87,11 +89,10 @@ def contact(request):
         messages.success(request, 'Thank you for your message! We will get back to you soon.')
         return redirect('contact')
     
-        context = {
-            'company_info': CompanyInfo.objects.first(),
-            'page_content': PageContent.objects.filter(page='contact').first(),
-        }
-        return render(request, 'contact.html', context)
+    context = {
+        'page_content': PageContent.objects.filter(page='contact').first(),
+    }
+    return render(request, 'contact.html', context)
 
 def sitemap_xml(request):
     """Generate XML sitemap"""

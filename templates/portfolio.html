@@ -21,183 +21,133 @@
     </div>
 </section>
 
-<!-- Kitchen Projects -->
-<section class="py-20 bg-background">
+<!-- Category Filter -->
+<section class="py-8 bg-card">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-                <span x-show="language === 'en'">Kitchen Projects</span>
-                <span x-show="language === 'ar'">مشاريع المطابخ</span>
-            </h2>
-            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                <span x-show="language === 'en'">Custom kitchen cabinets and millwork that transform cooking spaces into culinary masterpieces</span>
-                <span x-show="language === 'ar'">خزائن مطابخ وأعمال خشبية مخصصة تحول مساحات الطهي إلى تحف طهوية</span>
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo1.jpeg' %}" alt="Modern Kitchen" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
-                    <span x-show="language === 'en'">Modern Kitchen Design</span>
-                    <span x-show="language === 'ar'">تصميم مطبخ حديث</span>
-                </h3>
-                <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Clean lines and contemporary finishes</span>
-                    <span x-show="language === 'ar'">خطوط نظيفة وانتهاءات معاصرة</span>
-                </p>
-            </div>
-            
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo2.jpeg' %}" alt="Rustic Kitchen" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
-                    <span x-show="language === 'en'">Rustic Farmhouse Style</span>
-                    <span x-show="language === 'ar'">نمط المزرعة الريفي</span>
-                </h3>
-                <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Warm wood tones and traditional charm</span>
-                    <span x-show="language === 'ar'">درجات خشبية دافئة وسحر تقليدي</span>
-                </p>
-            </div>
-            
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo3.jpeg' %}" alt="Contemporary Kitchen" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
-                    <span x-show="language === 'en'">Contemporary Elegance</span>
-                    <span x-show="language === 'ar'">أناقة معاصرة</span>
-                </h3>
-                <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Sophisticated design with premium materials</span>
-                    <span x-show="language === 'ar'">تصميم متطور بمواد متميزة</span>
-                </p>
-            </div>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="{% url 'portfolio' %}" class="{% if not current_category %}bg-primary text-primary-foreground{% else %}bg-background text-foreground hover:bg-primary hover:text-primary-foreground{% endif %} px-6 py-2 rounded-lg font-medium transition-colors">
+                <span x-show="language === 'en'">All Projects</span>
+                <span x-show="language === 'ar'">جميع المشاريع</span>
+            </a>
+            {% for category_code, category_name in categories %}
+            <a href="{% url 'portfolio' %}?category={{ category_code }}" class="{% if current_category == category_code %}bg-primary text-primary-foreground{% else %}bg-background text-foreground hover:bg-primary hover:text-primary-foreground{% endif %} px-6 py-2 rounded-lg font-medium transition-colors">
+                <span x-show="language === 'en'">{{ category_name }}</span>
+                <span x-show="language === 'ar'">{{ category_name }}</span>
+            </a>
+            {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- Custom Furniture -->
-<section class="py-20 bg-card">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-4">
-                <span x-show="language === 'en'">Custom Furniture</span>
-                <span x-show="language === 'ar'">الأثاث المخصص</span>
-            </h2>
-            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                <span x-show="language === 'en'">Unique furniture pieces crafted to perfection, combining beauty with functionality</span>
-                <span x-show="language === 'ar'">قطع أثاث فريدة مصنوعة بكمال، تجمع بين الجمال والوظائف</span>
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo4.jpeg' %}" alt="Custom Library" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4">
-                    <span x-show="language === 'en'">Library Built-ins</span>
-                    <span x-show="language === 'ar'">خزائن مكتبة مدمجة</span>
-                </h3>
-                <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Elegant storage for book collections</span>
-                    <span x-show="language === 'ar'">تخزين أنيق لمجموعات الكتب</span>
-                </p>
-            </div>
-            
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo5.jpeg' %}" alt="Dining Set" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4">
-                    <span x-show="language === 'en'">Custom Dining Set</span>
-                    <span x-show="language === 'ar'">طقم طعام مخصص</span>
-                </h3>
-                <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Handcrafted dining room ensemble</span>
-                    <span x-show="language === 'ar'">مجموعة غرفة طعام مصنوعة يدوياً</span>
-                </p>
-            </div>
-            
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo6.jpeg' %}" alt="Custom Wardrobe" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <h3 class="text-xl font-heading font-semibold text-card-foreground mt-4">
-                    <span x-show="language === 'en'">Custom Wardrobe</span>
-                    <span x-show="language === 'ar'">خزانة ملابس مخصصة</span>
-                </h3>
-                <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Bespoke bedroom storage solution</span>
-                    <span x-show="language === 'ar'">حل تخزين غرفة نوم مخصص</span>
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Architectural Millwork -->
+<!-- Projects Grid -->
 <section class="py-20 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-                <span x-show="language === 'en'">Architectural Millwork</span>
-                <span x-show="language === 'ar'">الأعمال الخشبية المعمارية</span>
-            </h2>
-            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                <span x-show="language === 'en'">Architectural elements that add character and sophistication to any space</span>
-                <span x-show="language === 'ar'">عناصر معمارية تضيف الشخصية والأناقة إلى أي مساحة</span>
-            </p>
-        </div>
-        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo1.jpeg' %}" alt="Custom Staircase" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+            {% for project in projects %}
+            <div class="group hover-lift animate-fade-in-up animate-delay-{{ forloop.counter0|divisibleby:3|yesno:'100,200,300' }}" x-data="{ currentSlide: 0, totalSlides: {{ project.additional_images.count|add:1 }} }">
+                <div class="overflow-hidden rounded-lg relative image-zoom-container">
+                    {% if project.additional_images.all %}
+                    <!-- Image Slider -->
+                    <div class="relative w-full h-64">
+                        <!-- Main Image -->
+                        <div x-show="currentSlide === 0" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="absolute inset-0">
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Additional Images -->
+                        {% for img in project.additional_images.all %}
+                        <div x-show="currentSlide === {{ forloop.counter }}" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="absolute inset-0">
+                            <img src="{{ img.image.url }}" alt="{{ img.caption|default:project.title }}" class="w-full h-full object-cover">
+                        </div>
+                        {% endfor %}
+                        
+                        <!-- Navigation Arrows -->
+                        <button @click="currentSlide = currentSlide > 0 ? currentSlide - 1 : totalSlides - 1" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button @click="currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Dot Indicators -->
+                        <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
+                            <button @click="currentSlide = 0" class="w-2 h-2 rounded-full transition-all" :class="currentSlide === 0 ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/70'"></button>
+                            {% for img in project.additional_images.all %}
+                            <button @click="currentSlide = {{ forloop.counter }}" class="w-2 h-2 rounded-full transition-all" :class="currentSlide === {{ forloop.counter }} ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/70'"></button>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Single Image (no slider) -->
+                    {% if project.image and project.image.url %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    {% else %}
+                        <div class="w-full h-64 bg-primary/10 flex items-center justify-center rounded-lg">
+                            <svg class="w-20 h-20 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                    {% endif %}
+                    {% endif %}
                 </div>
                 <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
-                    <span x-show="language === 'en'">Custom Staircase</span>
-                    <span x-show="language === 'ar'">درج مخصص</span>
+                    <span x-show="language === 'en'">{{ project.title }}</span>
+                    <span x-show="language === 'ar'">{{ project.title_arabic|default:project.title }}</span>
                 </h3>
                 <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Elegant staircase as architectural centerpiece</span>
-                    <span x-show="language === 'ar'">درج أنيق كقطعة معمارية مركزية</span>
+                    <span x-show="language === 'en'">{{ project.description|truncatewords:15 }}</span>
+                    <span x-show="language === 'ar'">{{ project.description_arabic|default:project.description|truncatewords:15 }}</span>
+                </p>
+                <p class="text-sm text-primary mt-2">
+                    <span x-show="language === 'en'">{{ project.get_category_display }}</span>
+                    <span x-show="language === 'ar'">{{ project.get_category_display }}</span>
                 </p>
             </div>
-            
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo3.jpeg' %}" alt="Ceiling Beams" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
-                    <span x-show="language === 'en'">Ceiling Beams</span>
-                    <span x-show="language === 'ar'">عوارض السقف</span>
+            {% empty %}
+            <!-- Fallback content if no projects -->
+            <div class="col-span-full text-center py-12">
+                <svg class="w-20 h-20 text-muted-foreground mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <h3 class="text-xl font-heading font-semibold text-foreground mb-2">
+                    <span x-show="language === 'en'">No Projects Found</span>
+                    <span x-show="language === 'ar'">لا توجد مشاريع</span>
                 </h3>
                 <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Exposed beams adding rustic character</span>
-                    <span x-show="language === 'ar'">عوارض مكشوفة تضيف طابعاً ريفياً</span>
+                    <span x-show="language === 'en'">Check back soon for our latest projects</span>
+                    <span x-show="language === 'ar'">تحقق قريبا من أحدث مشاريعنا</span>
                 </p>
             </div>
-            
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="{% static 'images/demo4.jpeg' %}" alt="Wainscoting" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <h3 class="text-xl font-heading font-semibold text-foreground mt-4">
-                    <span x-show="language === 'en'">Wainscoting & Paneling</span>
-                    <span x-show="language === 'ar'">اللوحات الخشبية والتلوين</span>
-                </h3>
-                <p class="text-muted-foreground">
-                    <span x-show="language === 'en'">Traditional paneling for timeless appeal</span>
-                    <span x-show="language === 'ar'">تلوين تقليدي لجاذبية خالدة</span>
-                </p>
-            </div>
+            {% endfor %}
         </div>
+
+        <!-- Pagination -->
+        {% if projects.has_other_pages %}
+        <div class="flex justify-center mt-12 gap-2">
+            {% if projects.has_previous %}
+            <a href="?page={{ projects.previous_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}" class="bg-card text-card-foreground hover:bg-primary hover:text-primary-foreground px-4 py-2 rounded-lg font-medium transition-colors">
+                <span x-show="language === 'en'">Previous</span>
+                <span x-show="language === 'ar'">السابق</span>
+            </a>
+            {% endif %}
+
+            <span class="px-4 py-2 text-foreground">
+                <span x-show="language === 'en'">Page {{ projects.number }} of {{ projects.paginator.num_pages }}</span>
+                <span x-show="language === 'ar'">صفحة {{ projects.number }} من {{ projects.paginator.num_pages }}</span>
+            </span>
+
+            {% if projects.has_next %}
+            <a href="?page={{ projects.next_page_number }}{% if current_category %}&category={{ current_category }}{% endif %}" class="bg-card text-card-foreground hover:bg-primary hover:text-primary-foreground px-4 py-2 rounded-lg font-medium transition-colors">
+                <span x-show="language === 'en'">Next</span>
+                <span x-show="language === 'ar'">التالي</span>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
     </div>
 </section>
 
