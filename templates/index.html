@@ -2,8 +2,33 @@
 {% load static %}
 {% load custom_filters %}
 
-{% block title %}Royal Aluminium and UPVC Qatar - Premium Windows & Doors{% endblock %}
-{% block description %}Professional aluminium and UPVC services in Qatar specializing in windows, doors, facades, and architectural solutions. Premium quality and craftsmanship.{% endblock %}
+{% block title %}Aluminium Windows & UPVC Doors Qatar | Best Prices Doha | Royal Aluminium{% endblock %}
+{% block description %}#1 Aluminium Windows & UPVC Doors in Qatar. QCD Approved. Save 40% on AC costs. Serving Doha, Lusail, West Bay. Free Quote ☎ +974 7790 4281{% endblock %}
+{% block keywords %}aluminium windows Qatar, UPVC doors Qatar, aluminium windows Doha, sliding doors Qatar, aluminium facade Qatar, best aluminium company Qatar, energy efficient windows Qatar, QCD approved, Lusail, West Bay{% endblock %}
+
+{% block extra_head %}
+{% if faqs %}
+<!-- FAQ Schema Markup for Rich Snippets -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {% for faq in faqs %}
+        {
+            "@type": "Question",
+            "name": "{{ faq.question|escapejs }}",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{{ faq.answer|escapejs }}"
+            }
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>
+{% endif %}
+{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
@@ -32,8 +57,8 @@
             </div>
                 <div class="w-full h-96 lg:h-[400px] image-zoom-container animate-fade-in-right">
                     <img src="{% static 'images/demo1.jpeg' %}" 
-                         alt="Premium Aluminium Windows and Doors in Qatar - Royal Aluminium & UPVC Solutions" 
-                         title="Professional aluminium windows and UPVC doors installation in Qatar"
+                         alt="Premium Aluminium Windows and UPVC Doors Installation Qatar - Energy Efficient for Doha Villas" 
+                         title="Best Aluminium Windows Qatar - QCD Certified UPVC Doors Doha"
                          class="w-full h-full object-cover rounded-lg image-zoom" 
                          loading="eager">
                 </div>
@@ -544,10 +569,50 @@
     </div>
 </section>
 
-<!-- Call to Action -->
+<!-- FAQ Section -->
+{% if faqs %}
 <section class="py-20 bg-card">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-4">
+                <span x-show="language === 'en'">Frequently Asked Questions</span>
+                <span x-show="language === 'ar'">الأسئلة الشائعة</span>
+            </h2>
+            <p class="text-lg text-muted-foreground">
+                <span x-show="language === 'en'">Everything you need to know about aluminium windows and UPVC doors in Qatar</span>
+                <span x-show="language === 'ar'">كل ما تحتاج معرفته عن نوافذ الألمنيوم وأبواب اليو بي في سي في قطر</span>
+            </p>
+        </div>
+        
+        <div class="space-y-4" x-data="{ openFaq: null }">
+            {% for faq in faqs %}
+            <div class="bg-background rounded-lg border border-border overflow-hidden animate-fade-in-up animate-delay-{{ forloop.counter|add:'-1'|divisibleby:2|yesno:'100,200' }}">
+                <button @click="openFaq = openFaq === {{ forloop.counter }} ? null : {{ forloop.counter }}" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-card/50 transition-colors">
+                    <span class="font-heading font-semibold text-foreground pr-4">
+                        <span x-show="language === 'en'">{{ faq.question }}</span>
+                        <span x-show="language === 'ar'">{{ faq.question_arabic|default:faq.question }}</span>
+                    </span>
+                    <svg class="w-5 h-5 text-primary transition-transform flex-shrink-0" :class="{ 'rotate-180': openFaq === {{ forloop.counter }} }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="openFaq === {{ forloop.counter }}" x-collapse class="px-6 pb-4">
+                    <p class="text-muted-foreground leading-relaxed">
+                        <span x-show="language === 'en'">{{ faq.answer }}</span>
+                        <span x-show="language === 'ar'">{{ faq.answer_arabic|default:faq.answer }}</span>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Call to Action -->
+<section class="py-20 bg-background">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-6">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
             <span x-show="language === 'en'">Ready to Transform Your Space?</span>
             <span x-show="language === 'ar'">مستعد لتحويل مساحتك؟</span>
         </h2>

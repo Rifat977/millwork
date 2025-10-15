@@ -496,6 +496,97 @@ class Command(BaseCommand):
             company.save()
             self.stdout.write(self.style.SUCCESS('✓ Updated Company Info with service areas'))
 
+        # FAQ Section - SEO Optimized
+        faq_data = [
+            {
+                'question': 'What are the best aluminium windows for Qatar climate?',
+                'question_arabic': 'ما هي أفضل نوافذ الألمنيوم لمناخ قطر؟',
+                'answer': 'The best aluminium windows for Qatar are thermally broken, double-glazed windows with Low-E coating. These windows reduce heat transfer by up to 40%, significantly lowering AC costs in Qatar\'s extreme heat. We recommend powder-coated frames for durability against humidity and salt air. All our windows are QCD certified and designed specifically for Gulf climates.',
+                'answer_arabic': 'أفضل نوافذ الألمنيوم لقطر هي النوافذ المكسورة حرارياً ذات الزجاج المزدوج مع طلاء Low-E. هذه النوافذ تقلل نقل الحرارة بنسبة تصل إلى 40٪، مما يقلل بشكل كبير تكاليف التكييف في حرارة قطر الشديدة. نوصي بإطارات مطلية بالمسحوق للمتانة ضد الرطوبة والهواء المالح. جميع نوافذنا معتمدة من الدفاع المدني القطري ومصممة خصيصاً لمناخ الخليج.',
+                'category': 'products',
+                'order': 1
+            },
+            {
+                'question': 'How much do aluminium windows cost in Qatar?',
+                'question_arabic': 'كم تكلفة نوافذ الألمنيوم في قطر؟',
+                'answer': 'Aluminium window prices in Qatar vary based on size, type, and specifications. Standard casement windows start from QAR 800-1,200 per square meter. Sliding systems range from QAR 900-1,500 per sqm. Premium thermally broken systems with Low-E glass cost QAR 1,200-2,000 per sqm. Prices include materials, fabrication, and installation. We offer free site visits and detailed quotations for accurate pricing.',
+                'answer_arabic': 'تختلف أسعار نوافذ الألمنيوم في قطر بناءً على الحجم والنوع والمواصفات. النوافذ المفتوحة القياسية تبدأ من 800-1,200 ريال قطري لكل متر مربع. أنظمة المنزلقة تتراوح من 900-1,500 ريال قطري لكل متر مربع. أنظمة المكسورة حرارياً المتميزة مع زجاج Low-E تكلف 1,200-2,000 ريال قطري لكل متر مربع. الأسعار تشمل المواد والتصنيع والتركيب. نقدم زيارات موقع مجانية وعروض أسعار مفصلة.',
+                'category': 'pricing',
+                'order': 2
+            },
+            {
+                'question': 'Are your aluminium and UPVC products QCD approved in Qatar?',
+                'question_arabic': 'هل منتجات الألمنيوم واليو بي في سي معتمدة من الدفاع المدني القطري؟',
+                'answer': 'Yes, all our aluminium windows, UPVC doors, and facade systems are Qatar Civil Defence (QCD) approved and comply with Qatar Construction Specifications (QCS). We provide QCD certificates for all installations. Our products meet fire safety, structural, and quality standards required for residential and commercial buildings in Qatar.',
+                'answer_arabic': 'نعم، جميع نوافذ الألمنيوم وأبواب اليو بي في سي وأنظمة الواجهات معتمدة من الدفاع المدني القطري (QCD) وتتوافق مع مواصفات البناء القطرية (QCS). نقدم شهادات QCD لجميع التركيبات. منتجاتنا تلبي معايير السلامة من الحريق والهيكلية والجودة المطلوبة للمباني السكنية والتجارية في قطر.',
+                'category': 'general',
+                'order': 3
+            },
+            {
+                'question': 'How long does aluminium window installation take in Qatar?',
+                'question_arabic': 'كم من الوقت يستغرق تركيب نوافذ الألمنيوم في قطر؟',
+                'answer': 'Aluminium window installation in Qatar typically takes 2-4 weeks from measurement to completion. This includes: 1-2 days for site measurement, 1-2 weeks for fabrication, and 3-7 days for installation depending on project size. For villas, we usually complete within 2 weeks. Large commercial projects may take 3-4 weeks. We provide detailed timelines during quotation.',
+                'answer_arabic': 'تركيب نوافذ الألمنيوم في قطر يستغرق عادة 2-4 أسابيع من القياس حتى الإكمال. يشمل ذلك: 1-2 أيام للقياس الموقعي، 1-2 أسابيع للتصنيع، و3-7 أيام للتركيب حسب حجم المشروع. للفلل، نكمل عادة في غضون أسبوعين. المشاريع التجارية الكبيرة قد تستغرق 3-4 أسابيع. نقدم جداول زمنية مفصلة أثناء التسعير.',
+                'category': 'installation',
+                'order': 4
+            },
+            {
+                'question': 'What warranty do you provide on aluminium windows and UPVC doors?',
+                'question_arabic': 'ما الضمان الذي تقدمونه على نوافذ الألمنيوم وأبواب اليو بي في سي؟',
+                'answer': 'We provide a comprehensive 2-year warranty on all aluminium windows and UPVC doors in Qatar. This covers manufacturing defects, hardware failures, and installation issues. Powder coating on frames has a 5-year warranty against peeling or fading. Glass units have a 2-year seal warranty. We also offer extended warranty options and lifetime after-sales support.',
+                'answer_arabic': 'نقدم ضمان شامل لمدة عامين على جميع نوافذ الألمنيوم وأبواب اليو بي في سي في قطر. يغطي هذا عيوب التصنيع وفشل الأجهزة ومشاكل التركيب. الطلاء بالمسحوق على الإطارات له ضمان 5 سنوات ضد التقشير أو التلاشي. وحدات الزجاج لها ضمان ختم لمدة عامين. نقدم أيضاً خيارات ضمان ممتدة ودعم ما بعد البيع مدى الحياة.',
+                'category': 'warranty',
+                'order': 5
+            },
+            {
+                'question': 'Do you serve Lusail and West Bay in Qatar?',
+                'question_arabic': 'هل تخدمون لوسيل والخليج الغربي في قطر؟',
+                'answer': 'Yes, we serve all areas of Qatar including Lusail, West Bay, Doha, Al Rayyan, Al Wakrah, The Pearl Qatar, Al Khor, and Mesaieed. We have completed numerous projects in Lusail City and West Bay luxury villas. Our installation teams are experienced with high-rise towers and residential compounds across Qatar. We provide free site visits throughout Qatar.',
+                'answer_arabic': 'نعم، نخدم جميع مناطق قطر بما في ذلك لوسيل والخليج الغربي والدوحة والريان والوكرة واللؤلؤة قطر والخور ومسيعيد. أكملنا العديد من المشاريع في مدينة لوسيل وفلل الخليج الغربي الفاخرة. فرق التركيب لدينا ذات خبرة في الأبراج العالية والمجمعات السكنية في جميع أنحاء قطر. نقدم زيارات موقع مجانية في جميع أنحاء قطر.',
+                'category': 'general',
+                'order': 6
+            },
+            {
+                'question': 'How much can I save on AC costs with energy-efficient windows?',
+                'question_arabic': 'كم يمكنني توفيره على تكاليف التكييف مع النوافذ الموفرة للطاقة؟',
+                'answer': 'Energy-efficient aluminium windows in Qatar can reduce AC costs by 30-40%. Our thermally broken windows with Low-E glass significantly reduce heat gain. Typical Qatar villa can save QAR 2,000-4,000 annually on electricity bills. The investment pays back within 3-5 years. Our windows have U-values as low as 1.6 W/m²K, perfect for Qatar\'s climate.',
+                'answer_arabic': 'نوافذ الألمنيوم الموفرة للطاقة في قطر يمكن أن تقلل تكاليف التكييف بنسبة 30-40٪. نوافذنا المكسورة حرارياً مع زجاج Low-E تقلل بشكل كبير كسب الحرارة. فيلا قطر النموذجية يمكن أن توفر 2,000-4,000 ريال قطري سنوياً على فواتير الكهرباء. الاستثمار يؤتي ثماره في غضون 3-5 سنوات. نوافذنا لها قيم U منخفضة تصل إلى 1.6 W/m²K، مثالية لمناخ قطر.',
+                'category': 'products',
+                'order': 7
+            },
+            {
+                'question': 'What is the difference between UPVC and aluminium doors in Qatar?',
+                'question_arabic': 'ما الفرق بين أبواب اليو بي في سي والألمنيوم في قطر؟',
+                'answer': 'UPVC doors offer better thermal insulation and are more affordable (QAR 1,500-3,000 per door). They require less maintenance and resist Qatar\'s humidity well. Aluminium doors are stronger, slimmer, and better for larger openings (QAR 2,500-5,000). They\'re ideal for commercial use and modern aesthetics. Both are QCD approved. We recommend UPVC for residential main doors and aluminium for sliding patio doors in Qatar.',
+                'answer_arabic': 'أبواب اليو بي في سي توفر عزل حراري أفضل وأكثر تكلفة معقولة (1,500-3,000 ريال قطري لكل باب). تتطلب صيانة أقل وتقاوم رطوبة قطر جيداً. أبواب الألمنيوم أقوى وأنحف وأفضل للفتحات الأكبر (2,500-5,000 ريال قطري). إنها مثالية للاستخدام التجاري والجماليات الحديثة. كلاهما معتمد من QCD. نوصي باليو بي في سي للأبواب الرئيسية السكنية والألمنيوم للأبواب المنزلقة للفناء في قطر.',
+                'category': 'products',
+                'order': 8
+            },
+            {
+                'question': 'Do you provide free quotations and site visits in Qatar?',
+                'question_arabic': 'هل تقدمون عروض أسعار وزيارات موقع مجانية في قطر؟',
+                'answer': 'Yes, we provide completely FREE quotations and site visits anywhere in Qatar. Our expert team will visit your location in Doha, Lusail, or any Qatar area to take precise measurements and discuss your requirements. We provide detailed quotations within 24-48 hours including material specifications, timeline, and pricing. No obligation. Call +974 7790 4281 or WhatsApp us to schedule.',
+                'answer_arabic': 'نعم، نقدم عروض أسعار وزيارات موقع مجانية تماماً في أي مكان في قطر. فريق الخبراء لدينا سيزور موقعك في الدوحة أو لوسيل أو أي منطقة في قطر لأخذ قياسات دقيقة ومناقشة متطلباتك. نقدم عروض أسعار مفصلة في غضون 24-48 ساعة بما في ذلك مواصفات المواد والجدول الزمني والتسعير. بدون التزام. اتصل على +974 7790 4281 أو واتساب لتحديد موعد.',
+                'category': 'general',
+                'order': 9
+            },
+            {
+                'question': 'Which areas in Qatar do you provide aluminium and UPVC services?',
+                'question_arabic': 'ما هي المناطق في قطر التي تقدمون فيها خدمات الألمنيوم واليو بي في سي؟',
+                'answer': 'We provide aluminium windows and UPVC door services throughout Qatar including: Doha (all districts), Lusail City, West Bay, The Pearl Qatar, Al Rayyan, Al Wakrah, Al Khor, Mesaieed, and surrounding areas. We have completed 500+ projects across Qatar with installation teams ready to serve any location. Contact us for service in your area.',
+                'answer_arabic': 'نقدم خدمات نوافذ الألمنيوم وأبواب اليو بي في سي في جميع أنحاء قطر بما في ذلك: الدوحة (جميع المناطق)، مدينة لوسيل، الخليج الغربي، اللؤلؤة قطر، الريان، الوكرة، الخور، مسيعيد، والمناطق المحيطة. أكملنا أكثر من 500 مشروع في جميع أنحاء قطر مع فرق تركيب جاهزة لخدمة أي موقع. اتصل بنا للحصول على الخدمة في منطقتك.',
+                'category': 'general',
+                'order': 10
+            }
+        ]
+
+        for faq_item in faq_data:
+            faq, created = FAQ.objects.get_or_create(
+                question=faq_item['question'],
+                defaults=faq_item
+            )
+            self.stdout.write(self.style.SUCCESS(f'✓ FAQ: {faq.question[:50]}... {"created" if created else "updated"}'))
+
         self.stdout.write(self.style.SUCCESS('\n' + '='*60))
         self.stdout.write(self.style.SUCCESS('✓ Successfully populated database with SEO-friendly data!'))
         self.stdout.write(self.style.SUCCESS('='*60))
@@ -509,3 +600,4 @@ class Command(BaseCommand):
         self.stdout.write(f'  • Statistics: {CompanyStatistics.objects.count()}')
         self.stdout.write(f'  • Why Choose Us: {WhyChooseUsItem.objects.count()}')
         self.stdout.write(f'  • Certifications: {Certification.objects.count()}')
+        self.stdout.write(f'  • FAQs: {FAQ.objects.count()}')

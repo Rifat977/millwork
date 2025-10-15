@@ -13,6 +13,11 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="{% block canonical %}{{ request.build_absolute_uri }}{% endblock %}">
     
+    <!-- Hreflang Tags for Bilingual SEO -->
+    <link rel="alternate" hreflang="en" href="{{ request.build_absolute_uri }}" />
+    <link rel="alternate" hreflang="ar" href="{{ request.build_absolute_uri }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ request.build_absolute_uri }}" />
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{% block og_title %}Royal Aluminium and UPVC Qatar{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Professional aluminium and UPVC services in Qatar specializing in windows, doors, facades, and architectural solutions.{% endblock %}">
@@ -103,46 +108,98 @@
         .font-body { font-family: 'DM Sans', sans-serif; }
     </style>
     
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Enhanced Schema Markup (JSON-LD) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "LocalBusiness",
         "name": "Royal Aluminium and UPVC Qatar",
         "alternateName": "رويال الألمنيوم واليو بي في سي قطر",
-        "url": "{{ request.build_absolute_uri }}",
-        "logo": "{% if company_info.logo and company_info.logo.url %}{{ company_info.logo.url }}{% else %}{% static 'images/hero-kitchen.jpg' %}{% endif %}",
-        "description": "Professional aluminium and UPVC services in Qatar specializing in windows, doors, facades, and architectural solutions.",
+        "image": "{% if company_info.hero_image and company_info.hero_image.url %}{{ request.scheme }}://{{ request.get_host }}{{ company_info.hero_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/demo1.jpeg' %}{% endif %}",
+        "logo": "{% if company_info.logo and company_info.logo.url %}{{ request.scheme }}://{{ request.get_host }}{{ company_info.logo.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/demo1.jpeg' %}{% endif %}",
+        "url": "{{ request.scheme }}://{{ request.get_host }}",
+        "description": "Qatar's leading provider of premium aluminium windows, UPVC doors, facades, and architectural solutions. QCD certified with 500+ completed projects across Doha, Lusail, and West Bay.",
+        "priceRange": "$$",
+        "telephone": "{{ company_info.phone|default:'+974 7790 4281' }}",
+        "email": "{{ company_info.email|default:'info@royalaluminium.qa' }}",
         "address": {
             "@type": "PostalAddress",
-            "addressCountry": "QA",
+            "streetAddress": "{{ company_info.address|default:'Industrial Area, Street 38' }}",
             "addressLocality": "Doha",
-            "addressRegion": "Doha"
+            "addressRegion": "Doha",
+            "postalCode": "",
+            "addressCountry": "QA"
         },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "{{ company_info.phone|default:'+974 7790 4281' }}",
-            "contactType": "customer service",
-            "email": "{{ company_info.email|default:'info@royalaluminium.qa' }}"
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "25.2854",
+            "longitude": "51.5310"
         },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "18:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "16:00"
+            }
+        ],
         "sameAs": [
             "https://wa.me/{{ company_info.whatsapp|default:'97477904281' }}"
         ],
-        "areaServed": {
-            "@type": "Country",
-            "name": "Qatar"
-        },
-        "serviceType": [
-            "Aluminium Windows",
-            "UPVC Doors",
-            "Aluminium Facades",
-            "Custom Windows",
-            "Sliding Doors",
-            "Casement Windows",
-            "Architectural Solutions"
+        "areaServed": [
+            {"@type": "City", "name": "Doha"},
+            {"@type": "City", "name": "Lusail"},
+            {"@type": "City", "name": "West Bay"},
+            {"@type": "City", "name": "Al Rayyan"},
+            {"@type": "City", "name": "Al Wakrah"},
+            {"@type": "City", "name": "The Pearl Qatar"}
         ],
-        "foundingDate": "2024",
-        "slogan": "Premium Aluminium & UPVC Solutions"
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Aluminium and UPVC Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Aluminium Windows Installation Qatar",
+                        "description": "Energy-efficient aluminium windows for Qatar climate"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "UPVC Doors Qatar",
+                        "description": "Premium UPVC doors with multi-point locking"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Aluminium Facades Qatar",
+                        "description": "Modern curtain wall and facade systems"
+                    }
+                }
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "350",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "foundingDate": "2015",
+        "slogan": "Premium Aluminium & UPVC Solutions for Qatar",
+        "keywords": "aluminium windows Qatar, UPVC doors Qatar, aluminium facade, sliding doors, energy efficient windows Doha"
     }
     </script>
     

@@ -262,3 +262,29 @@ class Certification(models.Model):
 
     def __str__(self):
         return self.name
+
+class FAQ(models.Model):
+    """Model for Frequently Asked Questions - SEO Optimized"""
+    question = models.CharField(max_length=300, help_text="Question (keyword-rich)")
+    question_arabic = models.CharField(max_length=300, blank=True)
+    answer = models.TextField(help_text="Detailed answer with keywords")
+    answer_arabic = models.TextField(blank=True)
+    category = models.CharField(max_length=50, choices=[
+        ('general', 'General'),
+        ('products', 'Products'),
+        ('installation', 'Installation'),
+        ('pricing', 'Pricing'),
+        ('warranty', 'Warranty'),
+    ], default='general')
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0, help_text="Display order")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'created_at']
+        verbose_name = "FAQ"
+        verbose_name_plural = "FAQs"
+
+    def __str__(self):
+        return self.question

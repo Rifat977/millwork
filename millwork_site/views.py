@@ -7,7 +7,7 @@ from django.utils import timezone
 from .models import (
     Service, Project, TeamMember, CompanyInfo, 
     Testimonial, ContactMessage, PageContent,
-    CompanyStatistics, WhyChooseUsItem, Certification
+    CompanyStatistics, WhyChooseUsItem, Certification, FAQ
 )
 
 def home(request):
@@ -20,6 +20,7 @@ def home(request):
         'statistics': CompanyStatistics.objects.first(),
         'why_choose_items': WhyChooseUsItem.objects.filter(is_active=True),
         'certifications': Certification.objects.filter(is_active=True),
+        'faqs': FAQ.objects.filter(is_active=True)[:6],  # Show 6 most common FAQs
     }
     return render(request, 'index.html', context)
 

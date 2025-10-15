@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     Service, Project, ProjectImage, TeamMember, CompanyInfo, 
     Testimonial, ContactMessage, PageContent,
-    CompanyStatistics, WhyChooseUsItem, Certification
+    CompanyStatistics, WhyChooseUsItem, Certification, FAQ
 )
 
 @admin.register(Service)
@@ -220,6 +220,27 @@ class CertificationAdmin(admin.ModelAdmin):
         }),
         ('Media & Settings', {
             'fields': ('logo', 'is_active', 'order')
+        }),
+    )
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ['question', 'category', 'is_active', 'order', 'created_at']
+    list_filter = ['category', 'is_active', 'created_at']
+    search_fields = ['question', 'question_arabic', 'answer']
+    list_editable = ['is_active', 'order']
+    ordering = ['order', 'created_at']
+    
+    fieldsets = (
+        ('Question (English)', {
+            'fields': ('question', 'answer'),
+            'description': 'Use keyword-rich questions for better SEO'
+        }),
+        ('Question (Arabic)', {
+            'fields': ('question_arabic', 'answer_arabic')
+        }),
+        ('Settings', {
+            'fields': ('category', 'is_active', 'order')
         }),
     )
 
