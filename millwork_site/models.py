@@ -24,10 +24,10 @@ class Service(models.Model):
 class Project(models.Model):
     """Model for portfolio projects"""
     CATEGORY_CHOICES = [
-        ('windows', 'Windows'),
-        ('doors', 'Doors'),
-        ('facades', 'Facades'),
-        ('other', 'Other'),
+        ('aluminium_kitchen', 'Aluminium Kitchen Cabinet Luxurious Design'),
+        ('upvc_door_window', 'UPVC Door & Window'),
+        ('glass_door_partition', 'Glass Door & Partition'),
+        ('aluminum_door_window', 'Aluminum Door & Window'),
     ]
     
     title = models.CharField(max_length=200)

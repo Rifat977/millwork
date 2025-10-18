@@ -12,9 +12,21 @@ from .models import (
 
 def home(request):
     """Home page view"""
+    # Get projects organized by category
+    categories_with_projects = []
+    for category_key, category_name in Project.CATEGORY_CHOICES:
+        projects = Project.objects.filter(category=category_key, is_active=True)[:3]
+        if projects.exists():
+            categories_with_projects.append({
+                'key': category_key,
+                'name': category_name,
+                'projects': projects
+            })
+    
     context = {
         'services': Service.objects.filter(is_active=True)[:3],
         'featured_projects': Project.objects.filter(is_featured=True, is_active=True)[:3],
+        'categories_with_projects': categories_with_projects,
         'testimonials': Testimonial.objects.filter(is_active=True)[:3],
         'page_content': PageContent.objects.filter(page='home').first(),
         'statistics': CompanyStatistics.objects.first(),

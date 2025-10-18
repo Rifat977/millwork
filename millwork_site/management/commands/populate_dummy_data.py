@@ -108,64 +108,64 @@ class Command(BaseCommand):
             )
             self.stdout.write(self.style.SUCCESS(f'✓ Service: {service.name} {"created" if created else "updated"}'))
 
-        # Projects - Using actual images with SEO-optimized content
+        # Projects - Using actual images with SEO-optimized content and new categories
         projects_data = [
             {
-                'title': 'West Bay Luxury Villa - Aluminium Windows Installation',
-                'title_arabic': 'فيلا فاخرة في الغرب - تركيب نوافذ ألمنيوم',
-                'description': 'Complete aluminium window installation for a 5-bedroom luxury villa in West Bay. Features energy-efficient double-glazed windows with Low-E coating, reducing AC costs by 35%. Project completed in 3 weeks with minimal disruption to residents.',
-                'description_arabic': 'تركيب نوافذ ألمنيوم كامل لفيلا فاخرة من 5 غرف نوم في الغرب. تتميز بنوافذ زجاج مزدوج موفرة للطاقة مع طلاء Low-E، مما يقلل تكاليف التكييف بنسبة 35٪. اكتمل المشروع في 3 أسابيع بأقل قدر من الإزعاج للسكان.',
-                'category': 'windows',
+                'title': 'Luxury Villa - Premium Aluminium Kitchen Cabinets',
+                'title_arabic': 'فيلا فاخرة - خزائن مطبخ ألمنيوم متميزة',
+                'description': 'Custom aluminium kitchen cabinets with luxurious design for West Bay villa. Modern handleless design with soft-close mechanisms. Premium powder-coated finish in matte black. Includes glass-fronted wall units and LED lighting integration. Project value: QAR 85,000.',
+                'description_arabic': 'خزائن مطبخ ألمنيوم مخصصة بتصميم فاخر لفيلا الخليج الغربي. تصميم عصري بدون مقابض مع آليات إغلاق ناعم. تشطيب مسحوق متميز بأسود غير لامع. يشمل وحدات حائط بواجهة زجاجية ودمج إضاءة LED. قيمة المشروع: 85,000 ريال قطري.',
+                'category': 'aluminium_kitchen',
                 'is_featured': True,
                 'order': 1,
                 'image': 'demo1.jpeg'
             },
             {
-                'title': 'Pearl Qatar Tower - Commercial Facade System',
-                'title_arabic': 'برج اللؤلؤة قطر - نظام واجهة تجارية',
-                'description': 'Modern aluminium curtain wall facade for a 30-story commercial tower at The Pearl Qatar. Unitized system with superior thermal performance. Includes solar control glass and structural silicone glazing. Completed on schedule with QCD approval.',
-                'description_arabic': 'واجهة جدار ستاري ألمنيوم حديث لبرج تجاري من 30 طابق في اللؤلؤة قطر. نظام موحد بأداء حراري فائق. يشمل زجاج تحكم شمسي وزجاج سيليكون هيكلي. اكتمل في الموعد المحدد مع موافقة الدفاع المدني القطري.',
-                'category': 'facades',
+                'title': 'Al Rayyan Compound - UPVC Doors & Windows Package',
+                'title_arabic': 'مجمع الريان - حزمة أبواب ونوافذ يو بي في سي',
+                'description': 'Complete UPVC doors and windows installation for 40-villa compound in Al Rayyan. Energy-efficient double-glazed units with multi-point locking. German hardware and weather seals. Excellent thermal insulation reducing AC costs by 35%. 2-year comprehensive warranty.',
+                'description_arabic': 'تركيب أبواب ونوافذ يو بي في سي كامل لمجمع من 40 فيلا في الريان. وحدات زجاج مزدوج موفرة للطاقة مع قفل متعدد النقاط. أجهزة ألمانية وأختام طقس. عزل حراري ممتاز يقلل تكاليف التكييف بنسبة 35٪. ضمان شامل لمدة عامين.',
+                'category': 'upvc_door_window',
                 'is_featured': True,
                 'order': 2,
                 'image': 'demo2.jpeg'
             },
             {
-                'title': 'Al Rayyan Compound - UPVC Doors Project',
-                'title_arabic': 'مجمع الريان - مشروع أبواب يو بي في سي',
-                'description': 'Supply and installation of 150+ UPVC doors for residential compound in Al Rayyan. Multi-point locking system with weather seals. Completed for 40 villas with 2-year warranty. Excellent thermal and acoustic insulation.',
-                'description_arabic': 'توريد وتركيب أكثر من 150 باب يو بي في سي لمجمع سكني في الريان. نظام قفل متعدد النقاط مع أختام الطقس. اكتمل ل 40 فيلا مع ضمان لمدة عامين. عزل حراري وصوتي ممتاز.',
-                'category': 'doors',
+                'title': 'Doha Office Tower - Glass Doors & Partitions',
+                'title_arabic': 'برج مكاتب الدوحة - أبواب وفواصل زجاجية',
+                'description': 'Premium glass partition system for 12-floor office tower. Frameless glass doors with floor springs. Frosted and clear glass panels. Fire-rated partitions QCD approved. Soundproof glass for meeting rooms. Modern minimalist design.',
+                'description_arabic': 'نظام فواصل زجاجية متميز لبرج مكاتب من 12 طابق. أبواب زجاجية بدون إطار مع نوابض أرضية. ألواح زجاج مصنفر وشفاف. فواصل مقاومة للحريق معتمدة من الدفاع المدني. زجاج عازل للصوت لغرف الاجتماعات. تصميم بسيط عصري.',
+                'category': 'glass_door_partition',
                 'is_featured': True,
                 'order': 3,
                 'image': 'demo3.jpeg'
             },
             {
-                'title': 'Lusail Modern Villa - Complete Aluminium Package',
-                'title_arabic': 'فيلا لوسيل الحديثة - حزمة ألمنيوم كاملة',
-                'description': 'Full aluminium works including windows, doors, and sliding systems for modern villa in Lusail City. Black powder-coated frames with tinted glass. Custom-made sliding doors for living areas. Project value: QAR 450,000.',
-                'description_arabic': 'أعمال ألمنيوم كاملة تشمل النوافذ والأبواب والأنظمة المنزلقة لفيلا حديثة في مدينة لوسيل. إطارات سوداء مطلية بالمسحوق مع زجاج ملون. أبواب منزلقة مصنوعة حسب الطلب لمناطق المعيشة. قيمة المشروع: 450,000 ريال قطري.',
-                'category': 'windows',
+                'title': 'Lusail Villa - Aluminum Doors & Windows Complete',
+                'title_arabic': 'فيلا لوسيل - أبواب ونوافذ ألمنيوم كاملة',
+                'description': 'Full aluminum doors and windows package for luxury Lusail villa. Thermally broken profiles with Low-E glass. Powder-coated black frames. Sliding patio doors, casement windows, and entrance doors. Energy-efficient design saves QAR 3,500 yearly on electricity.',
+                'description_arabic': 'حزمة أبواب ونوافذ ألمنيوم كاملة لفيلا لوسيل الفاخرة. ملفات مكسورة حرارياً مع زجاج Low-E. إطارات سوداء مطلية بالمسحوق. أبواب فناء منزلقة، نوافذ مفتوحة، وأبواب مدخل. تصميم موفر للطاقة يوفر 3,500 ريال قطري سنوياً على الكهرباء.',
+                'category': 'aluminum_door_window',
                 'is_featured': False,
                 'order': 4,
                 'image': 'demo4.jpeg'
             },
             {
-                'title': 'Doha Office Building - Glass Partitions',
-                'title_arabic': 'مبنى مكاتب الدوحة - فواصل زجاجية',
-                'description': 'Modern office partitions with aluminium framing for 8-floor office building. Fire-rated glass partitions with soundproofing. Frameless glass doors and frosted glass panels. Completed fit-out in 6 weeks.',
-                'description_arabic': 'فواصل مكاتب حديثة بإطارات ألمنيوم لمبنى مكاتب من 8 طوابق. فواصل زجاجية مقاومة للحريق مع عزل صوتي. أبواب زجاجية بدون إطار وألواح زجاج مصنفر. اكتمل التجهيز في 6 أسابيع.',
-                'category': 'other',
+                'title': 'The Pearl Qatar - Modern Kitchen Cabinets',
+                'title_arabic': 'اللؤلؤة قطر - خزائن مطبخ حديثة',
+                'description': 'High-end aluminium kitchen cabinets for Pearl Qatar apartment. Contemporary design with built-in appliances. Soft-close drawers and premium fittings. White gloss finish with chrome handles. Custom pantry and island design.',
+                'description_arabic': 'خزائن مطبخ ألمنيوم راقية لشقة اللؤلؤة قطر. تصميم معاصر مع أجهزة مدمجة. أدراج إغلاق ناعم وتجهيزات متميزة. تشطيب أبيض لامع مع مقابض كروم. تصميم مخزن وجزيرة مخصص.',
+                'category': 'aluminium_kitchen',
                 'is_featured': False,
                 'order': 5,
                 'image': 'demo5.jpeg'
             },
             {
-                'title': 'Al Wakrah Villa - Sliding Door Systems',
-                'title_arabic': 'فيلا الوكرة - أنظمة أبواب منزلقة',
-                'description': 'Premium sliding door installation connecting indoor and outdoor spaces. Heavy-duty aluminium track system. Thermally broken profiles for energy efficiency. Large glass panels for maximum natural light.',
-                'description_arabic': 'تركيب أبواب منزلقة متميزة تربط المساحات الداخلية والخارجية. نظام مسار ألمنيوم للخدمة الشاقة. ملفات تعريف مكسورة حرارياً لكفاءة الطاقة. ألواح زجاج كبيرة لأقصى إضاءة طبيعية.',
-                'category': 'doors',
+                'title': 'Al Wakrah Villa - UPVC Windows & Doors',
+                'title_arabic': 'فيلا الوكرة - نوافذ وأبواب يو بي في سي',
+                'description': 'Complete UPVC windows and doors for Al Wakrah villa. Energy-efficient German profile systems. Multi-chambered design for superior insulation. Mosquito screens included. White frames with decorative glass patterns.',
+                'description_arabic': 'نوافذ وأبواب يو بي في سي كاملة لفيلا الوكرة. أنظمة ملف تعريف ألماني موفرة للطاقة. تصميم متعدد الحجرات للعزل الفائق. شبكات بعوض متضمنة. إطارات بيضاء مع أنماط زجاج زخرفية.',
+                'category': 'upvc_door_window',
                 'is_featured': False,
                 'order': 6,
                 'image': 'demo6.jpeg'
